@@ -1,0 +1,41 @@
+//
+//  EventsListResponse.swift
+//  FireLoyaltyKit
+//
+//  Created by Mani bhushan M on 28/06/25.
+//
+
+
+import Foundation
+
+/// Response model for events list
+public struct EventsListResponse: Decodable {
+    public let custname: String?
+    public let events: [EventListModel]?
+    public let location: [Location]?
+    public let points: Int?
+    public let status: String?
+    public let messsage: String?
+    public let total: Int?
+}
+
+/// Individual event entry
+public struct EventListModel: Decodable, Identifiable {
+    public let bookmark_status: Int?
+    public let city: Int?
+    public let create_date: String?
+    public let date: String?
+    public let description: String?
+    public let expiry_date: String?
+    public let id: Int?
+    public let img: URL?
+    public let is_rsvp: Int?
+    public let label: Int?
+    public let link: String?
+    public let mall: Int?
+    public let name: String?
+    public let open_link: Int?
+    public let point: String?
+    public let quantity: Int?
+}
+

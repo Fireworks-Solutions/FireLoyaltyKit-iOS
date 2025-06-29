@@ -1,0 +1,146 @@
+//
+//  AuthClient.swift
+//  FireLoyaltyKit
+//
+//  Created by Mani bhushan M on 27/06/25.
+//
+
+// AuthClient.swift
+import Foundation
+
+
+public final class AuthClient {
+    private let network: NetworkClient
+
+    public init(network: NetworkClient = FireworksLoyaltyKit.network) {
+        self.network = network
+    }
+
+    public func login(username : String,password: String,
+                    onSuccess: @escaping (LoginResponse) -> Void,
+                    onError: @escaping (APIError) -> Void)
+  {
+   
+      var params: [String:Any] = [:]
+      params["email"] = username
+      params["password"] = password
+      params["type"] = ""
+      
+      let mm = AppUtills().createVC(date: (username + URLContstants.pvcSeKey))
+      params["pvc"] = mm
+      
+    
+    network.post(URLContstants.loginAPI, params: params, responseType: LoginResponse.self) { result in
+      switch result {
+      case .success(let resp):
+        // 1) Persist tokens in Keychain
+          
+          KeychainHelper.shared.save(resp.token ?? "", forKey: KeychainKeys.accessToken)
+          KeychainHelper.shared.save(resp.token ?? "", forKey: KeychainKeys.refreshToken)
+          KeychainHelper.shared.save(resp.custid ?? "", forKey: KeychainKeys.custid)
+
+        DispatchQueue.main.async { onSuccess(resp) }
+
+      case .failure(let err):
+        DispatchQueue.main.async { onError(err) }
+      }
+    }
+  }
+    
+    //MARK: Fetch the current email status.
+    /// - onSuccess: returns the decoded `GeneralResponseModel`
+    /// - onError: returns the underlying `APIError`
+    public func registerEmailCheckAPI(
+        email : String,
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        var params: [String:Any] = [:]
+        params["email"] = email
+    
+      network.post(URLContstants.registerEmailCheckAPI, params: params, responseType: GeneralResponseModel.self) { result in
+          
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    //MARK: Add push Notifications.
+    /// - onSuccess: returns the decoded `GeneralResponseModel`
+    /// - onError: returns the underlying `APIError`
+    public func addPushTokenAPI(
+        token : String,
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        var params: [String:Any] = [:]
+        params["token"] = token
+    
+      network.post(URLContstants.registerEmailCheckAPI, params: params, responseType: GeneralResponseModel.self) { result in
+          
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+}
+
+// MARK: MODELS
+public struct LoginResponse: Decodable, Identifiable {
+    /// Use `custid` as the unique identifier
+    public var id: String { custid ?? UUID().uuidString }
+
+    public let status: String?
+    public let message: String?
+    public let custid: String?
+    public let name: String?
+    public let fname: String?
+    public let lname: String?
+    public let phone: String?
+    public let email: String?
+    public let change_password: String?
+    public let register: String?
+    public let url: String?
+    public let token: String?
+    public let reset: String?
+
+    private enum CodingKeys: String, CodingKey {
+        case status, message, custid, name, fname
+        case lname
+        case phone
+        case email
+        case change_password
+        case register
+        case url
+        case token
+        case reset
+    }
+
+    // If you want a default value for phone when the key is missing or null:
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        status         = try container.decodeIfPresent(String.self, forKey: .status)
+        message        = try container.decodeIfPresent(String.self, forKey: .message)
+        custid         = try container.decodeIfPresent(String.self, forKey: .custid)
+        name           = try container.decodeIfPresent(String.self, forKey: .name)
+        fname          = try container.decodeIfPresent(String.self, forKey: .fname)
+        lname        = try container.decodeIfPresent(String.self, forKey: .lname)
+        phone          = try container.decodeIfPresent(String.self, forKey: .phone)
+        email          = try container.decodeIfPresent(String.self, forKey: .email)
+        change_password = try container.decodeIfPresent(String.self, forKey: .change_password)
+        register       = try container.decodeIfPresent(String.self, forKey: .register)
+        url            = try container.decodeIfPresent(String.self, forKey: .url)
+        token          = try container.decodeIfPresent(String.self, forKey: .token)
+        reset          = try container.decodeIfPresent(String.self, forKey: .reset)
+    }
+}
+

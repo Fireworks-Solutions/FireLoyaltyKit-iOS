@@ -1,0 +1,156 @@
+//
+//  ProfileModel.swift
+//  FireLoyaltyKit
+//
+//  Created by Mani bhushan M on 28/06/25.
+//
+
+import Foundation
+
+// MARK: –– ProfileModel
+public struct ProfileModel: Decodable {
+    public let status: String?
+    public let message: String?
+    public let profile: ProfileResult?
+}
+
+// MARK: –– ProfileResult
+public struct ProfileResult: Decodable, Identifiable {
+    /// Use `custid` as the unique identifier
+    public let id: String
+
+    public let customerStatus: String?
+    public let name: String?
+    public let fname: String?
+    public let lname: String?
+    public let email: String?
+    public let title: String?
+    public let nric: String?
+    public let displayName: String?
+    public let phone: String?
+    public let postcode: String?
+    public let cardNo: String?
+    public let custType: String?
+    public let nextRank: String?
+    public let hobby: String?
+    public let interest: String?
+    public let dob: String?
+    public let race: String?
+    public let gender: String?
+    public let qrcode: String?
+    public let qrImage: String?
+    public let totalReward: String?
+    public let totalRewardPurchased: String?
+    public let totalEventPurchased: String?
+    public let points: String?
+    public let expired: String?
+    public let voucher: String?
+    public let rank: String?
+    public let rankImg: String?
+    public let gotProfile: String?
+    public let profileUrl: String?
+    public let nextLevel: String?
+    public let percentageNextLevel: Int?
+    public let loveAnniversary: String?
+    public let nationality: String?
+    public let countryOfResidence: String?
+    public let phoneCountry: String?
+    public let householdIncome: Int?
+    public let selectedInterests: String?
+    public let memberCard: String?
+    public let userType: String?
+    public let preferredMall: String?
+    public let address1: String?
+    public let address2: String?
+    public let city: String?
+    public let region: String?
+    public let cardExpiry: String?
+    public let referralCode: String?
+    public let referralWebURL: String?
+    public let idType: Int?
+    public let expiryPoints: String?
+    public let purchaseValue: String?
+    public let passwordSaved: Bool?
+    public let pointExpiryDate: String?
+    public let pointExpiryValue: String?
+    public let pValue: Int?
+    public let formattedPValue: String?
+    public let redeemablePoints: String?
+    public let showDailyCheckIn: Bool?
+    public let payableByPoints: Bool?
+    public let showPayButton: Bool?
+    public let countdownTimer: Int?
+    public let payPointsEnabled: Bool?
+
+    private enum CodingKeys: String, CodingKey {
+        case customerStatus    = "customer_status"
+        case id                = "custid"
+        case name, fname, lname, email, title, nric
+        case displayName       = "display_name"
+        case phone, postcode
+        case cardNo            = "cardno"
+        case custType          = "cust_type"
+        case nextRank          = "next_rank"
+        case hobby, interest, dob, race, gender, qrcode
+        case qrImage           = "qrimage"
+        case totalReward       = "total_reward"
+        case totalRewardPurchased = "total_reward_purchased"
+        case totalEventPurchased  = "total_event_purchased"
+        case points, expired, voucher, rank
+        case rankImg           = "rank_img"
+        case gotProfile        = "got_profile"
+        case profileUrl        = "profile"
+        case nextLevel         = "next_level"
+        case percentageNextLevel = "next_level_percentage"
+        case loveAnniversary   = "love_anniversary"
+        case nationality
+        case countryOfResidence = "country_of_residence"
+        case phoneCountry      = "phone_country"
+        case householdIncome   = "household_income"
+        case selectedInterests = "selected_interests"
+        case memberCard        = "member_card"
+        case userType          = "user_type"
+        case preferredMall     = "preferred_mall"
+        case address1, address2, city, region
+        case cardExpiry        = "card_expiry"
+        case referralCode      = "referral_code"
+        case referralWebURL    = "referral_web_url"
+        case idType            = "id_type"
+        case expiryPoints      = "expiry_points"
+        case purchaseValue     = "purchase_value"
+        case passwordSaved     = "password_saved"
+        case pointExpiryDate   = "point_expiry_date"
+        case pointExpiryValue  = "point_expiry_value"
+        case pValue            = "p_value"
+        case formattedPValue   = "formatted_p_value"
+        case redeemablePoints  = "redeemable_points"
+        case showDailyCheckIn, payableByPoints = "payable_by_points"
+        case showPayButton     = "show_pay_button"
+        case countdownTimer    = "countdown_timer"
+        case payPointsEnabled  = "paypointsenabled"
+    }
+}
+
+// MARK: –– ProfileImageModel
+public struct ProfileImageModel: Decodable, Identifiable {
+    /// We don’t have a numeric ID here, so generate one on decode
+    public let id = UUID()
+
+    public let gotProfile: String?
+    public let profile: String?
+    public let custname: String?
+    public let points: String?
+    public let setting: GetSettingModel?
+
+    private enum CodingKeys: String, CodingKey {
+        case gotProfile = "got_profile"
+        case profile, custname, points, setting
+    }
+}
+
+// MARK: –– Placeholder for GetSettingModel
+public struct GetSettingModel: Decodable {
+    // Define your properties here, e.g.:
+    // public let someFlag: Bool?
+    // public let anotherSetting: String?
+}
