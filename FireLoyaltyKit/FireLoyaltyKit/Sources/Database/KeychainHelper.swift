@@ -57,7 +57,7 @@ public final class KeychainHelper {
     /// Delete a value for a given key.
     /// - Parameter key: The unique key that identifies the entry.
     @discardableResult
-    public func delete(_ key: String) -> Bool {
+public func delete(_ key: String) -> Bool {
         let query: [CFString: Any] = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrAccount: key

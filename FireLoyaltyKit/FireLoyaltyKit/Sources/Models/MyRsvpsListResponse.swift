@@ -9,7 +9,7 @@
 import Foundation
 
 /// Top-level response for user's RSVPs list
-public struct MyRsvpsListResponse: Decodable {
+public struct MyRsvpsListResponse: Codable {
     public let custname: String?
     public let end: Int?
     public let events: [RsvpListModel]?
@@ -20,11 +20,11 @@ public struct MyRsvpsListResponse: Decodable {
 }
 
 /// Individual RSVP entry
-public struct RsvpListModel: Decodable, Identifiable {
+public struct RsvpListModel: Codable, Identifiable {
     public let cid: Int?
     public let expired_date: String?
     public let id: Int?
-    public let img: URL?
+    public let img: String?
     public let mall: Int?
     public let merchant_name: String?
     public let name: String?

@@ -9,7 +9,7 @@
 import Foundation
 
 /// Top-level response for event details
-public struct EventDetailsResponse: Decodable {
+public struct EventDetailsResponse: Codable {
     public let custname: String?
     public let details: [EventDetail]?
     public let status: String?
@@ -17,11 +17,11 @@ public struct EventDetailsResponse: Decodable {
 }
 
 /// Detailed information for an individual event
-public struct EventDetail: Decodable, Identifiable {
+public struct EventDetail: Codable, Identifiable {
     public let address: String?
     public let bookmark_status: Int?
     public let description: String?
-    public let featured_image: URL?
+    public let featured_image: String?
     public let id: Int?
     public let is_rsvp: Int?
     public let label: Int?

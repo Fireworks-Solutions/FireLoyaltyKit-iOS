@@ -9,7 +9,7 @@
 import Foundation
 
 /// Top-level response for reward details
-public struct RewardDetailsResponse: Decodable {
+public struct RewardDetailsResponse: Codable {
     public let custname: String?
     public let details: [RewardDetail]?
     public let status: String?
@@ -17,7 +17,7 @@ public struct RewardDetailsResponse: Decodable {
 }
 
 /// Individual reward detail entry
-public struct RewardDetail: Decodable, Identifiable {
+public struct RewardDetail: Codable, Identifiable {
     public let address: String?
     public let bookmark_status: Int?
     public let branches_available: Int?
@@ -25,7 +25,7 @@ public struct RewardDetail: Decodable, Identifiable {
     public let collection_method: [CollectionMethod]?
     public let delivery: Int?
     public let description: String?
-    public let featured_image: URL?
+    public let featured_image: String?
     public let gift: Int?
     public let id: Int?
     public let is_swipe: Int?
@@ -60,14 +60,14 @@ public struct RewardDetail: Decodable, Identifiable {
 }
 
 /// Collection method option
-public struct CollectionMethod: Decodable {
+public struct CollectionMethod: Codable {
     public let id: Int?
     public let shipping: Int?
     public let title: String?
 }
 
 /// Merchant information entry
-public struct MerchantInfo: Decodable {
+public struct MerchantInfo: Codable {
     public let id: Int?
     public let mall: String?
     public let title: String?

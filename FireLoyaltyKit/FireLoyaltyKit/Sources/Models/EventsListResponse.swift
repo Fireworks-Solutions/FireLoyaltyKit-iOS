@@ -9,7 +9,7 @@
 import Foundation
 
 /// Response model for events list
-public struct EventsListResponse: Decodable {
+public struct EventsListResponse: Codable {
     public let custname: String?
     public let events: [EventListModel]?
     public let location: [Location]?
@@ -20,7 +20,7 @@ public struct EventsListResponse: Decodable {
 }
 
 /// Individual event entry
-public struct EventListModel: Decodable, Identifiable {
+public struct EventListModel: Codable, Identifiable {
     public let bookmark_status: Int?
     public let city: Int?
     public let create_date: String?
@@ -28,7 +28,7 @@ public struct EventListModel: Decodable, Identifiable {
     public let description: String?
     public let expiry_date: String?
     public let id: Int?
-    public let img: URL?
+    public let img: String?
     public let is_rsvp: Int?
     public let label: Int?
     public let link: String?

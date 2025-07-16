@@ -8,7 +8,7 @@
 import Foundation
 
 /// Model for checkout response
-public struct CheckOutModel: Decodable {
+public struct CheckOutModel: Codable {
     public let balance: String?
     public let code: String?
     public let countdown_timer: Int?

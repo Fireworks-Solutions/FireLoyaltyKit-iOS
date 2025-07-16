@@ -28,7 +28,9 @@ struct URLContstants {
     
     //MARK: DASHBOARD/HOME
     static let dashboardAPI = "api2/dashboard.php?"
-    
+    static let usefullLinkAPI = "api2/usefullinks.php?"
+    static let MallsAPI = "api/mallls.php?"
+    static let MEMBERS_LIST_API = "api2/member_alertList.php?"
     
     //MARK: PROFILE
     static let GET_PROFILE = "api2/profile.php?"
@@ -57,6 +59,10 @@ struct URLContstants {
     static let RSVPDetailsAPI = "api2/webview_getWalletDetails.php?";
     static let eventCheckOutAPI = "api2/event_checkout.php?";
    
+    //MARK: PROMOTIONS
+    static let promotionsListAPI = "api2/getNews.php?";
+    static let promotionDetailsAPI = "api2/getNewsDetails.php?";
+    
     //MARK: DIRECTORY
     static let getDirectoryAPI = "api2/getDirectoryList.php?"
     static let getMerchantDetail = "api2/webview_aboutMerchant.php?"

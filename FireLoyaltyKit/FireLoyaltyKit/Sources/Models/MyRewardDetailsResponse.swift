@@ -9,7 +9,7 @@
 import Foundation
 
 /// Top-level response for a user's reward details
-public struct MyRewardDetailsResponse: Decodable {
+public struct MyRewardDetailsResponse: Codable {
     public let custname: String?
     public let details: [MyRewardDetail]?
     public let shared_message: String?
@@ -17,13 +17,13 @@ public struct MyRewardDetailsResponse: Decodable {
 }
 
 /// Detailed information for an individual reward
-public struct MyRewardDetail: Decodable, Identifiable {
+public struct MyRewardDetail: Codable, Identifiable {
     public let bar_code: Int?
     public let bookmark_status: Int?
     public let branches_available: Int?
     public let button_status: Int?
     public let description: String?
-    public let featured_image: URL?
+    public let featured_image: String?
     public let gift_status: Int?
     public let id: Int?
     public let is_donation: Int?

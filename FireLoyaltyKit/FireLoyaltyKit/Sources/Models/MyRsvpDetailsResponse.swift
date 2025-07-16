@@ -9,7 +9,7 @@
 import Foundation
 
 /// Top-level response for a user's RSVP details
-public struct MyRsvpDetailsResponse: Decodable {
+public struct MyRsvpDetailsResponse: Codable {
     public let custname: String?
     public let details: [RsvpDetail]?
     public let shared_message: String?
@@ -17,12 +17,12 @@ public struct MyRsvpDetailsResponse: Decodable {
 }
 
 /// Detailed information for an individual RSVP
-public struct RsvpDetail: Decodable, Identifiable {
+public struct RsvpDetail: Codable, Identifiable {
     public let bar_code: Int?
     public let bookmark_status: Int?
     public let button_status: Int?
     public let description: String?
-    public let featured_image: URL?
+    public let featured_image: String?
     public let full_address: String?
     public let gift_status: Int?
     public let id: Int?

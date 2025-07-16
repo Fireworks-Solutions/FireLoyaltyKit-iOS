@@ -1,11 +1,11 @@
 //
-//  DashboardClient.swift
+//  InitClient.swift
 //  FireLoyaltyKit
 //
-//  Created by Mani bhushan M on 28/06/25.
+//  Created by Mani bhushan M on 06/07/25.
 //
 
-public final class DashboardClient {
+public final class InitClient {
     private let network: NetworkClient
     
     /// Defaults to the shared NetBizKit.network
@@ -14,14 +14,14 @@ public final class DashboardClient {
     }
     
     /// Fetch the current user’s profile.
-    /// - onSuccess: returns the decoded `ProfileResult`
+    /// - onSuccess: returns the decoded `DashboardResponse`
     /// - onError: returns the underlying `APIError`
-    public func getDashboard(
-        onSuccess: @escaping (DashboardResponse) -> Void,
+    public func getMalls(
+        onSuccess: @escaping (MallsResponse) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.dashboardAPI, params: [:], responseType: DashboardResponse.self) { result in
+        network.post(URLContstants.MallsAPI, params: [:], responseType: MallsResponse.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)
@@ -31,12 +31,12 @@ public final class DashboardClient {
         }
     }
     
-    public func getUsefullLinks(
-        onSuccess: @escaping (UsefulLinksResponse) -> Void,
+    public func getMemberAlertsApi(
+        onSuccess: @escaping (MembersAlertResponse) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.usefullLinkAPI, params: [:], responseType: UsefulLinksResponse.self) { result in
+        network.post(URLContstants.MEMBERS_LIST_API, params: [:], responseType: MembersAlertResponse.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)

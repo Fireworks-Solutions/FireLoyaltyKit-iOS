@@ -8,7 +8,7 @@
 import Foundation
 
 /// Top-level response for user rewards list
-public struct MyRewardsListResponse: Decodable {
+public struct MyRewardsListResponse: Codable {
     public let custname: String?
     public let end: Int?
     public let points: String?
@@ -20,11 +20,11 @@ public struct MyRewardsListResponse: Decodable {
 }
 
 /// Individual wallet item entry
-public struct MyRewardsListModel: Decodable {
+public struct MyRewardsListModel: Codable ,Identifiable{
     public let cid: Int?
     public let expired_date: String?
     public let id: Int?
-    public let img: URL?
+    public let img: String?
     public let mall: Int?
     public let merchant_name: String?
     public let name: String?

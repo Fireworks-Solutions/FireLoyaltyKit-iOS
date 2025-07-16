@@ -9,7 +9,7 @@
 import Foundation
 
 /// Model for event checkout response
-public struct EventCheckOutModel: Decodable {
+public struct EventCheckOutModel: Codable {
     public let balance: Int?
     public let code: String?
     public let message: String?

@@ -6,7 +6,7 @@
 //
 import Foundation
 // MARK: - SummaryResponse
-public struct RewardsListResponse: Decodable {
+public struct RewardsListResponse: Codable {
     public let custname: String?
     public let end: Int?
     public let location: [Location]?
@@ -19,13 +19,16 @@ public struct RewardsListResponse: Decodable {
 }
 
 // MARK: - Location
-public struct Location: Decodable {
+public struct Location: Codable ,Identifiable{
+    
     public let location_id: Int?
     public let location_name: String?
+    
+    public var id: Int? { location_id }
 }
 
 // MARK: - RewardItem
-public struct RewardListModel: Decodable {
+public struct RewardListModel: Codable ,Identifiable{
     public let bookmark_status: Int?
     public let buy_to: String?
     public let cash: String?
@@ -34,7 +37,7 @@ public struct RewardListModel: Decodable {
     public let description: String?
     public let end_date_text: String?
     public let id: Int?
-    public let img: URL?
+    public let img: String?
     public let is_donation: Int?
     public let label: String?
     public let label_info: LabelInfo?

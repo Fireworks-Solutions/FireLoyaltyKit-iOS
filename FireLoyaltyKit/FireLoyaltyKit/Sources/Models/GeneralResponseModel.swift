@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GeneralResponseModel: Decodable {
+public struct GeneralResponseModel: Codable {
     public let status: String?
     public let message: String?
 }

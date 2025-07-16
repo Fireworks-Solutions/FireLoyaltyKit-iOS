@@ -18,7 +18,7 @@ public final class AuthClient {
 
     public func login(username : String,password: String,
                     onSuccess: @escaping (LoginResponse) -> Void,
-                    onError: @escaping (APIError) -> Void)
+                onError: @escaping (APIError) -> Void)
   {
    
       var params: [String:Any] = [:]

@@ -8,14 +8,14 @@
 import Foundation
 
 // MARK: –– ProfileModel
-public struct ProfileModel: Decodable {
+public struct ProfileModel: Codable {
     public let status: String?
     public let message: String?
     public let profile: ProfileResult?
 }
 
 // MARK: –– ProfileResult
-public struct ProfileResult: Decodable, Identifiable {
+public struct ProfileResult: Codable, Identifiable {
     /// Use `custid` as the unique identifier
     public let id: String
 
@@ -149,7 +149,7 @@ public struct ProfileImageModel: Decodable, Identifiable {
 }
 
 // MARK: –– Placeholder for GetSettingModel
-public struct GetSettingModel: Decodable {
+public struct GetSettingModel: Codable {
     // Define your properties here, e.g.:
     // public let someFlag: Bool?
     // public let anotherSetting: String?

@@ -9,14 +9,14 @@ import Foundation
 
 
 /// Response model for category listing
-public struct CategoryResponse: Decodable {
+public struct CategoryResponse: Codable {
     public let result: [Category]?
     public let status: String?
     public let message: String?
 }
 
 // Alternatively, if you prefer true Identifiable conformance:
- public struct Category: Decodable, Identifiable {
+ public struct Category: Codable, Identifiable {
      public let featured_img: String?
      public let id: Int?
      public let title: String?

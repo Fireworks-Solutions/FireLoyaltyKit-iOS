@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - DashboardResponse
-public struct DashboardResponse: Decodable {
+public struct DashboardResponse: Codable {
     public let gotProfile: String?
     public let profile: String?
     public let status: String?
@@ -19,15 +19,15 @@ public struct DashboardResponse: Decodable {
     public let custType: String?
     public let points: String?
     public let tenants: [Tenant]
-    public let news: [JSONAny]
+    public let news: [Promotion]
     public let membersNews: [MemberNews]
     public let bannerNews: [BannerNews]
     public let promotions: [Promotion]
     public let rewards: [DashboardReward]
-    public let hotDeals: [JSONAny]
+    public let hotDeals: [DashboardReward]
     public let events: [Event]
-    public let purchaseNoRating: [JSONAny]
     public let showDailyCheckIn: Bool?
+    
 
     private enum CodingKeys: String, CodingKey {
         case gotProfile   = "got_profile"
@@ -40,18 +40,17 @@ public struct DashboardResponse: Decodable {
         case promotions, rewards
         case hotDeals     = "hot_deals"
         case events
-        case purchaseNoRating = "purchase_norating"
         case showDailyCheckIn  = "showDailyCheckIn"
     }
 }
 
 // MARK: - Tenant
-public struct Tenant: Decodable {
+public struct Tenant: Codable ,Identifiable{
     public let id: String
     public let title: String
     public let description: String?
     public let location: String?
-    public let featuredImg: URL?
+    public let featuredImg: String?
     public let createdAt: String?
 
     private enum CodingKeys: String, CodingKey {
@@ -62,11 +61,11 @@ public struct Tenant: Decodable {
 }
 
 // MARK: - MemberNews
-public struct MemberNews: Decodable {
+public struct MemberNews: Codable ,Identifiable{
     public let id: String
     public let title: String
     public let description: String?
-    public let featuredImg: URL?
+    public let featuredImg: String?
     public let createdAt: String?
     public let mall: Int?
 
@@ -79,31 +78,25 @@ public struct MemberNews: Decodable {
 }
 
 // MARK: - BannerNews
-public struct BannerNews: Decodable {
+public struct BannerNews: Codable ,Identifiable{
     public let id: String
     public let title: String
     public let description: String?
-    public let featuredImg: URL?
-    public let createdAt: String?
+    public let featured_img: String?
+    public let created_at: String?
     public let clickable: Bool?
     public let link: String?
-    public let openLink: Bool?
-
-    private enum CodingKeys: String, CodingKey {
-        case id, title, description
-        case featuredImg = "featured_img"
-        case createdAt   = "created_at"
-        case clickable, link
-        case openLink    = "open_link"
-    }
+    public let open_link: Bool?
+    
+    public var identity: String? { id }
 }
 
 // MARK: - Promotion
-public struct Promotion: Decodable {
+public struct Promotion: Codable ,Identifiable{
     public let id: String
     public let title: String
     public let description: String?
-    public let featuredImg: URL?
+    public let featuredImg: String?
     public let createdAt: String?
     public let mall: Int?
     public let startDate: String?
@@ -122,12 +115,12 @@ public struct Promotion: Decodable {
 }
 
 // MARK: - Reward
-public struct DashboardReward: Decodable {
+public struct DashboardReward: Codable ,Identifiable{
     public let id: String
     public let name: String
     public let description: String?
     public let point: String?
-    public let img: URL?
+    public let img: String?
     public let date: String?
     public let mall: Int?
     public let cashPayment: Bool?
@@ -146,7 +139,7 @@ public struct DashboardReward: Decodable {
     }
 }
 
-public struct LabelInfo: Decodable {
+public struct LabelInfo: Codable {
     public let textColor: String?
     public let bgColor: String?
 
@@ -157,12 +150,12 @@ public struct LabelInfo: Decodable {
 }
 
 // MARK: - Event
-public struct Event: Decodable {
+public struct Event: Codable ,Identifiable{
     public let id: String
     public let name: String
     public let description: String?
     public let point: String?
-    public let img: URL?
+    public let img: String?
     public let date: String?
     public let openLink: Bool?
     public let link: String?
@@ -171,7 +164,7 @@ public struct Event: Decodable {
     private enum CodingKeys: String, CodingKey {
         case id, name, description, point, img, date, mall
         case openLink = "open_link"
-        case link
+case link
     }
 }
 

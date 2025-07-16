@@ -1,11 +1,11 @@
 //
-//  DashboardClient.swift
+//  PromotionsClient.swift
 //  FireLoyaltyKit
 //
-//  Created by Mani bhushan M on 28/06/25.
+//  Created by Mani bhushan M on 06/07/25.
 //
 
-public final class DashboardClient {
+public final class PromotionsClient {
     private let network: NetworkClient
     
     /// Defaults to the shared NetBizKit.network
@@ -14,14 +14,15 @@ public final class DashboardClient {
     }
     
     /// Fetch the current user’s profile.
-    /// - onSuccess: returns the decoded `ProfileResult`
+    /// - onSuccess: returns the decoded `PromotionListResponse`
     /// - onError: returns the underlying `APIError`
-    public func getDashboard(
-        onSuccess: @escaping (DashboardResponse) -> Void,
+    public func getPromotionsList(
+        parameters: [String: Any] = [:],
+        onSuccess: @escaping (PromotionListResponse) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.dashboardAPI, params: [:], responseType: DashboardResponse.self) { result in
+        network.post(URLContstants.promotionsListAPI, params: parameters, responseType: PromotionListResponse.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)
@@ -31,12 +32,13 @@ public final class DashboardClient {
         }
     }
     
-    public func getUsefullLinks(
-        onSuccess: @escaping (UsefulLinksResponse) -> Void,
+    public func getPromotionDetails(
+        parameters: [String: Any],
+        onSuccess: @escaping (PromotionDetailResponse) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.usefullLinkAPI, params: [:], responseType: UsefulLinksResponse.self) { result in
+        network.post(URLContstants.promotionDetailsAPI, params: parameters, responseType: PromotionDetailResponse.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)
