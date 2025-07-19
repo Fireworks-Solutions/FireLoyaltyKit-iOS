@@ -48,6 +48,11 @@ struct URLContstants {
     static let rewardDetailsAPI = "api2/webview_getDetails.php?";
     static let checkOutApi = "api2/checkout.php?";
     
+    //MARK: Gift redemption
+    let get_shipping_points = "api2/get_shipping_points.php?"
+    let gift_CheckOut = "api2/giftCheckout.php?"
+    
+    
     //MARK: My REWARDS
     static let myRewardsListAPI = "api2/webview_getWallet.php?";
     static let myRewardDetailsAPI = "api2/webview_getWalletDetails.php?";

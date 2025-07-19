@@ -15,11 +15,12 @@ public final class EventsClient {
     
     //MARK: Event List
     public func getEventsList(
+        param : [String:Any] = [:],
         onSuccess: @escaping (EventsListResponse) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.eventsAPI, params: [:], responseType: EventsListResponse.self) { result in
+        network.post(URLContstants.eventsAPI, params: param, responseType: EventsListResponse.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)

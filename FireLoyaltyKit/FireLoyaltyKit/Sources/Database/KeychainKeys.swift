@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct KeychainKeys {
+public struct KeychainKeys {
     static let refreshToken = "refreshToken"
     static let accessToken = "accessToken"
     static let deviceModel = "deviceModel"
@@ -16,4 +16,6 @@ struct KeychainKeys {
     static let custid = "custid"
     static let appversion = "appversion"
     static let apilogs = "apilogs"
+    
+    static let mallId = "mallid"
 }

@@ -22,11 +22,12 @@ public final class ProfileClient {
     /// - onSuccess: returns the decoded `ProfileResult`
     /// - onError: returns the underlying `APIError`
     public func getProfile(
+        param : [String:Any] = [:],
         onSuccess: @escaping (ProfileResult) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.GET_PROFILE, params: [:], responseType: ProfileModel.self) { result in
+        network.post(URLContstants.GET_PROFILE, params: param, responseType: ProfileModel.self) { result in
             switch result {
             case .success(let model):
                 if let profile = model.profile {
@@ -45,7 +46,7 @@ public final class ProfileClient {
     /// - onSuccess: returns the updated `ProfileResult`
     /// - onError: returns the underlying `APIError`
     public func saveProfile(
-        _ params: [String: Any],
+        params: [String: Any],
         onSuccess: @escaping (GeneralResponseModel) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {

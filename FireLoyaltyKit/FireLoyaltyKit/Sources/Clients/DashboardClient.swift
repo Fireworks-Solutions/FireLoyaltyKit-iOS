@@ -17,11 +17,12 @@ public final class DashboardClient {
     /// - onSuccess: returns the decoded `ProfileResult`
     /// - onError: returns the underlying `APIError`
     public func getDashboard(
+        param : [String:Any] = [:],
         onSuccess: @escaping (DashboardResponse) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.dashboardAPI, params: [:], responseType: DashboardResponse.self) { result in
+        network.post(URLContstants.dashboardAPI, params: param, responseType: DashboardResponse.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)
@@ -32,11 +33,12 @@ public final class DashboardClient {
     }
     
     public func getUsefullLinks(
+        param : [String:Any] = [:],
         onSuccess: @escaping (UsefulLinksResponse) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.usefullLinkAPI, params: [:], responseType: UsefulLinksResponse.self) { result in
+        network.post(URLContstants.usefullLinkAPI, params: param, responseType: UsefulLinksResponse.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)

@@ -171,6 +171,8 @@ public final class NetworkClient {
         param["os"] = "iOS"
         param["deviceid"] = KeychainHelper.shared.read(KeychainKeys.deviceId) ?? ""
         param["devicetype"] = KeychainHelper.shared.read(KeychainKeys.deviceModel) ?? ""
+        param["mall"] = KeychainHelper.shared.read(KeychainKeys.mallId) ?? ""
+        
         param["svc"] = URLContstants.secretKeyPass
         
         if custid.count > 0 {

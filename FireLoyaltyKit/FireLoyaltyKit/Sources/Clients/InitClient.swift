@@ -17,11 +17,12 @@ public final class InitClient {
     /// - onSuccess: returns the decoded `DashboardResponse`
     /// - onError: returns the underlying `APIError`
     public func getMalls(
+        param : [String:Any] = [:],
         onSuccess: @escaping (MallsResponse) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.MallsAPI, params: [:], responseType: MallsResponse.self) { result in
+        network.post(URLContstants.MallsAPI, params: param, responseType: MallsResponse.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)
@@ -32,11 +33,12 @@ public final class InitClient {
     }
     
     public func getMemberAlertsApi(
+        param : [String:Any] = [:],
         onSuccess: @escaping (MembersAlertResponse) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.MEMBERS_LIST_API, params: [:], responseType: MembersAlertResponse.self) { result in
+        network.post(URLContstants.MEMBERS_LIST_API, params: param, responseType: MembersAlertResponse.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)

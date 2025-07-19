@@ -17,11 +17,12 @@ public final class RewardsClient {
     /// - onSuccess: returns the decoded `RewardsListResponse`
     /// - onError: returns the underlying `APIError`
     public func getRewardsList(
+        param : [String:Any] = [:],
         onSuccess: @escaping (RewardsListResponse) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.rewardsListAPI, params: [:], responseType: RewardsListResponse.self) { result in
+        network.post(URLContstants.rewardsListAPI, params: param, responseType: RewardsListResponse.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)
@@ -50,11 +51,12 @@ public final class RewardsClient {
     
     //MARK: Rewards Category List
     public func getRewardsCategoryList(
+        param : [String:Any] = [:],
         onSuccess: @escaping (CategoryResponse) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.getCategoryAPI, params: [:], responseType: CategoryResponse.self) { result in
+        network.post(URLContstants.getCategoryAPI, params: param, responseType: CategoryResponse.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)
@@ -66,11 +68,12 @@ public final class RewardsClient {
     
     //MARK: MY Rewards List
     public func getMyRewardsList(
+        param : [String:Any] = [:],
         onSuccess: @escaping (MyRewardsListResponse) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.myRewardsListAPI, params: [:], responseType: MyRewardsListResponse.self) { result in
+        network.post(URLContstants.myRewardsListAPI, params: param, responseType: MyRewardsListResponse.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)
