@@ -23,7 +23,7 @@ public struct EventDetail: Codable, Identifiable {
     public let description: String?
     public let featured_image: String?
     public let id: Int?
-    public let is_rsvp: Int?
+    public let is_rsvp: Bool?
     public let label: Int?
     public let latitude: String?
     public let limit_message: String?
@@ -40,8 +40,8 @@ public struct EventDetail: Codable, Identifiable {
     public let redeem_start: String?
     public let redeem_status: Int?
     public let share_link: String?
-    public let shipping: Int?
-    public let swipe: Int?
+    public let shipping: Bool?
+    public let swipe: Bool?
     public let stock_left: Int?
     public let stock_message: String?
     public let stock_status: Int?

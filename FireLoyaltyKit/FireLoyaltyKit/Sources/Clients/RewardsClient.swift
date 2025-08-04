@@ -35,11 +35,11 @@ public final class RewardsClient {
     //MARK: Reward Details
     public func getRewardDetails(
         param : [String:Any],
-        onSuccess: @escaping (RewardsListResponse) -> Void,
+        onSuccess: @escaping (RewardDetailsResponse) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.rewardsListAPI, params: param, responseType: RewardsListResponse.self) { result in
+        network.post(URLContstants.rewardDetailsAPI, params: param, responseType: RewardDetailsResponse.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)
@@ -83,6 +83,23 @@ public final class RewardsClient {
         }
     }
     
+    //MARK: MY Rewards List
+    public func getMultiRewardsList(
+        param : [String:Any] = [:],
+        onSuccess: @escaping (MyRewardsListResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.MultiRewardsListAPI, params: param, responseType: MyRewardsListResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
     //MARK: My Reward Details
     public func getMyRewardDetails(
         param : [String:Any],
@@ -100,7 +117,7 @@ public final class RewardsClient {
         }
     }
     
-    //MARK: My Reward Details
+    //MARK: checkout API
     public func callCheckOutApi(
         param : [String:Any],
         onSuccess: @escaping (CheckOutModel) -> Void,
@@ -108,6 +125,75 @@ public final class RewardsClient {
     ) {
         
         network.post(URLContstants.checkOutApi, params: param, responseType: CheckOutModel.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    
+    //MARK: Stamp Rewards List API
+    public func getStampRewardsList(
+        param : [String:Any],
+        onSuccess: @escaping (DailyCheckInResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.stampRewardsListAPI, params: param, responseType: DailyCheckInResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    //MARK: getCheckedInStampReward
+    public func getCheckedInStampReward(
+        param : [String:Any],
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.stampRewardsListAPI, params: param, responseType: GeneralResponseModel.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    //MARK: Gift Check out API
+    public func callGiftCheckOutApi(
+        param : [String:Any],
+        onSuccess: @escaping (CheckOutModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.gift_CheckOut, params: param, responseType: CheckOutModel.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    //MARK: Gift Check out API
+    public func callShippingPointsApi(
+        param : [String:Any],
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.get_shipping_points, params: param, responseType: GeneralResponseModel.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)

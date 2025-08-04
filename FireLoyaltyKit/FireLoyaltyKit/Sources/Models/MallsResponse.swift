@@ -7,11 +7,11 @@ public struct MallsResponse: Codable {
 }
 
 public struct Mall: Codable, Identifiable {
-    public let  id: Int?
+    public let  id: String?
     public let  name: String?
     public let  about: String?
     public let  contactUs: String?
-    public let  defaultMall: Int?
+    public let  defaultMall: Bool?
     public let  email: String?
     public let  googleMaps: String?
     public let  icon: String?
@@ -20,13 +20,13 @@ public struct Mall: Codable, Identifiable {
     public let  mallLogoInverse: String?
     public let  phone: String?
     public let  shortDesc: String?
-    public let  showDirectory: Int?
-    public let  showReceipt: Int?
+    public let  showDirectory: Bool?
+    public let  showReceipt: Bool?
     public let  textLogo: String?
     public let  waze: String?
     public let  whatsapp: String?
     
-    var identifier: Int? { id }
+    var identifier: String? { id }
    
     
     enum CodingKeys: String, CodingKey {

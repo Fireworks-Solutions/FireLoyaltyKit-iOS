@@ -18,11 +18,11 @@ public final class TransactionHistoryClient {
     /// - onError: returns the underlying `APIError`
     public func getTransactionList(
         parameters: [String: Any] = [:],
-        onSuccess: @escaping (PromotionListResponse) -> Void,
+        onSuccess: @escaping (TransactionHistoryResponse) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.promotionsListAPI, params: parameters, responseType: PromotionListResponse.self) { result in
+        network.post(URLContstants.transactionHistoryAPI, params: parameters, responseType: TransactionHistoryResponse.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)
@@ -34,11 +34,43 @@ public final class TransactionHistoryClient {
     
     public func getTransactionListDetails(
         parameters: [String: Any],
-        onSuccess: @escaping (PromotionDetailResponse) -> Void,
+        onSuccess: @escaping (THdetailsResponse) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.promotionDetailsAPI, params: parameters, responseType: PromotionDetailResponse.self) { result in
+        network.post(URLContstants.transactionHistoryDetailsAPI, params: parameters, responseType: THdetailsResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    public func archiveTransactionItem(
+        parameters: [String: Any],
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.archiveTransactionAPI, params: parameters, responseType: GeneralResponseModel.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    public func payWithPointsAPI(
+        parameters: [String: Any],
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.PAY_WITH_POINTS_API, params: parameters, responseType: GeneralResponseModel.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)

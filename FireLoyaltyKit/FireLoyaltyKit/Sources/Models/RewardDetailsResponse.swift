@@ -18,51 +18,64 @@ public struct RewardDetailsResponse: Codable {
 
 /// Individual reward detail entry
 public struct RewardDetail: Codable, Identifiable {
-    public let address: String?
-    public let bookmark_status: Int?
-    public let branches_available: Int?
-    public let cash_purchase: Int?
-    public let collection_method: [CollectionMethod]?
-    public let delivery: Int?
-    public let description: String?
-    public let featured_image: String?
-    public let gift: Int?
-    public let id: Int?
-    public let is_swipe: Int?
-    public let label: String?
-    public let limit_message: String?
-    public let mall: Int?
-    public let merchant_info: [MerchantInfo]?
-    public let merchant_name: String?
-    public let merchantid: Int?
-    public let more_details: String?
-    public let pickup: Int?
-    public let points: String?
-    public let points_raw: Int?
-    public let purchase_amount: String?
-    public let purchase_end: String?
-    public let purchase_limit: Int?
-    public let purchase_quantity: Int?
-    public let purchase_start: String?
-    public let quantity_message: String?
-    public let redeem_end: String?
-    public let redeem_location: String?
-    public let redeem_start: String?
-    public let stock_message: String?
-    public let stock_status: Int?
-    public let title: String?
-    public let validity: String?
-    public let validity_message: String?
-
+    public var label: String?
+        public var id: String? // used for Identifiable
+        public var wallet_id: String?
+        public var title: String?
+        public var description: String?
+        public var featured_image: String?
+        
+        public var validity: String?
+        public var validity_message: String?
+        public var points: String?
+        public var point: String?
+        public var points_raw: Int?
+        public var purchase_start: String?
+        public var purchase_end: String?
+        
+        public var redeem_start: String?
+        public var redeem_end: String?
+        public var button_status: Bool?
+        public var merchantid: Int?
+        
+        public var branches_available: Int?
+        public var gift_status: String?
+        public var redeem_location: String?
+        public var share_link: String?
+        public var more_details: String?
+        
+        public var address: String?
+        public var latitude: String?
+        public var longitude: String?
+        public var purchase_quantity: String?
+        public var limit_message: String?
+        public var purchase_limit: String?
+        public var merchant_name: String?
+        
+        public var mall: Int?
+        public var mall_String: String?
+        public var gift: Bool?
+        public var pickup: Bool?
+        public var delivery: Bool?
+        public var merchant_info: [MerchantInfo]?
+        public var collection_method: [CollectionMethod]?
+        public var is_swipe: Bool?
+        
+        public var purchase_amount: String?
+        public var is_donation: Bool?
+        
+        public var rewards_given: [GivenRewardsModel]?
+        public var is_rsvp: Bool?
+    
     // Conform to Identifiable
-    public var identity: Int? { id }
+    public var identity: String? { id }
     public var uuid: UUID { UUID() }
 }
 
 /// Collection method option
 public struct CollectionMethod: Codable {
     public let id: Int?
-    public let shipping: Int?
+    public let shipping: Bool?
     public let title: String?
 }
 
@@ -71,4 +84,9 @@ public struct MerchantInfo: Codable {
     public let id: Int?
     public let mall: String?
     public let title: String?
+}
+
+public struct GivenRewardsModel : Codable {
+    public let name : String?
+    public let type : String?
 }

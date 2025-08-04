@@ -46,7 +46,35 @@ public final class AuthClient {
       }
     }
   }
+    public func login(param :[String:Any],
+                    onSuccess: @escaping (LoginResponse) -> Void,
+                onError: @escaping (APIError) -> Void)
+  {
+   
+      //var params: [String:Any] = param
+     
+//      let mm = AppUtills().createVC(date: (username + URLContstants.pvcSeKey))
+//      params["pvc"] = mm
+      
     
+      network.post(URLContstants.loginAPI, params: param, responseType: LoginResponse.self) { result in
+      switch result {
+      case .success(let resp):
+        // 1) Persist tokens in Keychain
+          
+          KeychainHelper.shared.save(resp.token ?? "", forKey: KeychainKeys.accessToken)
+          KeychainHelper.shared.save(resp.token ?? "", forKey: KeychainKeys.refreshToken)
+          KeychainHelper.shared.save(resp.custid ?? "", forKey: KeychainKeys.custid)
+
+        DispatchQueue.main.async { onSuccess(resp) }
+
+      case .failure(let err):
+        DispatchQueue.main.async { onError(err) }
+      }
+    }
+  }
+    
+   
     //MARK: Fetch the current email status.
     /// - onSuccess: returns the decoded `GeneralResponseModel`
     /// - onError: returns the underlying `APIError`
@@ -70,6 +98,147 @@ public final class AuthClient {
         }
     }
     
+    //
+    //MARK: Register OTP
+    /// - Parameters:
+    ///   - params:
+    ///   - onSuccess: onSuccess description
+    ///   - onError: onError description
+    public func registerOTPAPI(
+        params: [String:Any],
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+      network.post(URLContstants.otpRegisterAPI, params: params, responseType: GeneralResponseModel.self) { result in
+          
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    //MARK: Regiter OTP verification
+    /// - Parameters:
+    ///   - params: params description
+    ///   - onSuccess: onSuccess description
+    ///   - onError: onError description
+    public func registerOTPVerificationAPI(
+        params: [String:Any],
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+      network.post(URLContstants.otpRegisterVerificationAPI, params: params, responseType: GeneralResponseModel.self) { result in
+          
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    //MARK: Register User
+    /// - Parameters:
+    ///   - param: param description
+    ///   - onSuccess: onSuccess description
+    ///   - onError: onError description
+    public func register(param :[String:Any],
+                    onSuccess: @escaping (RegisterResponse) -> Void,
+                onError: @escaping (APIError) -> Void)
+  {
+   
+      //var params: [String:Any] = param
+     
+//      let mm = AppUtills().createVC(date: (username + URLContstants.pvcSeKey))
+//      params["pvc"] = mm
+      
+    
+      network.post(URLContstants.registerAPI, params: param, responseType: RegisterResponse.self) { result in
+      switch result {
+      case .success(let resp):
+        // 1) Persist tokens in Keychain
+          
+          KeychainHelper.shared.save(resp.custid ?? "", forKey: KeychainKeys.custid)
+
+        DispatchQueue.main.async { onSuccess(resp) }
+
+      case .failure(let err):
+        DispatchQueue.main.async { onError(err) }
+      }
+    }
+   }
+    
+    //MARK: GIVE POINTS
+    /// - Parameters:
+    ///   - param: param description
+    ///   - onSuccess: onSuccess description
+    ///   - onError: onError description
+    public func givePointsAPI(param :[String:Any],
+                    onSuccess: @escaping (GivePointsResponse) -> Void,
+                onError: @escaping (APIError) -> Void)
+  {
+   
+      network.post(URLContstants.giveRewardsPoints, params: param, responseType: GivePointsResponse.self) { result in
+      switch result {
+      case .success(let resp):
+       
+        DispatchQueue.main.async { onSuccess(resp) }
+
+      case .failure(let err):
+        DispatchQueue.main.async { onError(err) }
+      }
+    }
+  }
+    
+    //MARK: GET POINTS Details
+    /// - Parameters:
+    ///   - param: param description
+    ///   - onSuccess: onSuccess description
+    ///   - onError: onError description
+    public func getPointDetailsAPI(param :[String:Any],
+                    onSuccess: @escaping (GivePointsResponse) -> Void,
+                onError: @escaping (APIError) -> Void)
+  {
+   
+      network.post(URLContstants.getPointDetailsPI, params: param, responseType: GivePointsResponse.self) { result in
+      switch result {
+      case .success(let resp):
+       
+        DispatchQueue.main.async { onSuccess(resp) }
+
+      case .failure(let err):
+        DispatchQueue.main.async { onError(err) }
+      }
+    }
+  }
+    
+    //MARK: Apply Tourist API
+    /// - Parameters:
+    ///   - param: param description
+    ///   - onSuccess: onSuccess description
+    ///   - onError: onError description
+    public func applyTouristAPI(param :[String:Any],
+                    onSuccess: @escaping (GeneralResponseModel) -> Void,
+                onError: @escaping (APIError) -> Void)
+  {
+   
+      network.post(URLContstants.applytTourist_API, params: param, responseType: GeneralResponseModel.self) { result in
+      switch result {
+      case .success(let resp):
+       
+        DispatchQueue.main.async { onSuccess(resp) }
+
+      case .failure(let err):
+        DispatchQueue.main.async { onError(err) }
+      }
+    }
+  }
     //MARK: Add push Notifications.
     /// - onSuccess: returns the decoded `GeneralResponseModel`
     /// - onError: returns the underlying `APIError`

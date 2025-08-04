@@ -32,13 +32,39 @@ public final class InitClient {
         }
     }
     
-    public func getMemberAlertsApi(
+    // MARK: Get Memebers list API
+    /// - Parameters:
+    ///   - param: param description
+    ///   - onSuccess: onSuccess description
+    ///   - onError: onError description
+    public func getInAppAlertsApi(
         param : [String:Any] = [:],
         onSuccess: @escaping (MembersAlertResponse) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {
         
         network.post(URLContstants.MEMBERS_LIST_API, params: param, responseType: MembersAlertResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    // MARK: Get APP Alerts list API
+    /// - Parameters:
+    ///   - param: param description
+    ///   - onSuccess: onSuccess description
+    ///   - onError: onError description
+    public func getAppAlertsListApi(
+        param : [String:Any] = [:],
+        onSuccess: @escaping (MembersAlertResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.AlertsAPI, params: param, responseType: MembersAlertResponse.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)

@@ -10,6 +10,7 @@ struct URLContstants {
     
     //MARK: ON BOARDING
     static let baseConfigAPI = "api/baseConfig.php?"
+    static let AlertsAPI = "api2/alertList.php?"
     
     
     //MARK: AUTH
@@ -19,9 +20,14 @@ struct URLContstants {
     
     static let REFRESH_TOKEN_API = "api2/refreshToken.php?"        // REFRESH TOKEN
      
+    //MARK: REGISTER
     static let registerEmailCheckAPI = "api2/checkEmail.php?" // Check email registered or not
     static let loginAPI = "api2/login.php?"                   // Login
-    static let registerAPI = "api2/register.php?"
+    static let registerAPI = "api2/register.php?" // -> During Registration
+    static let otpRegisterAPI = "api2/otp_register.php?" // -> During Login
+    static let otpRegisterVerificationAPI = "api2/otp_register_verification.php?"
+    static let giveRewardsPoints = "api2/giveRewardPoints.php?"
+    static let getPointDetailsPI = "api2/PointDetails.php?"
     
     static let changePasswordAPI = "api2/changepass.php?"     // Passwords
     static let forgotPasswordAPI = "e-commerce/api/forgetPass.php?"
@@ -29,7 +35,7 @@ struct URLContstants {
     //MARK: DASHBOARD/HOME
     static let dashboardAPI = "api2/dashboard.php?"
     static let usefullLinkAPI = "api2/usefullinks.php?"
-    static let MallsAPI = "api/mallls.php?"
+    static let MallsAPI = "api/malllist.php?"
     static let MEMBERS_LIST_API = "api2/member_alertList.php?"
     
     //MARK: PROFILE
@@ -42,19 +48,23 @@ struct URLContstants {
     static let deviceTokenAPI = "api2/addDeviceToken.php?"
     static let getNotificationAPI = "api2/getnoti.php?"
     static let setnotificationAPI = "api2/savenoti.php?"
-
+    static let getNotificationsAPI = "api2/getNotifications.php?"
+    static let getInboxAPI = "api/inbox_listing.php?"
+    static let inboxActionAPI = "api2/inbox_action.php?"
+    
     //MARK: REWARDS
     static let rewardsListAPI = "api2/webview_getRewards.php?";
     static let rewardDetailsAPI = "api2/webview_getDetails.php?";
     static let checkOutApi = "api2/checkout.php?";
     
     //MARK: Gift redemption
-    let get_shipping_points = "api2/get_shipping_points.php?"
-    let gift_CheckOut = "api2/giftCheckout.php?"
+    static let get_shipping_points = "api2/get_shipping_points.php?"
+    static let gift_CheckOut = "api2/giftCheckout.php?"
     
     
     //MARK: My REWARDS
     static let myRewardsListAPI = "api2/webview_getWallet.php?";
+    static let MultiRewardsListAPI = "api2/webview_multiWalletList.php?";
     static let myRewardDetailsAPI = "api2/webview_getWalletDetails.php?";
     
     //MARK: EVENTS
@@ -78,6 +88,7 @@ struct URLContstants {
     static let check_Referral_code_API = "api/check_valid_referral.php?"
     static let Release_Points_API = "api2/releasePoints.php?"
     static let transactionHistoryAPI = "api2/merchantTransactionHistoryNew.php?"
+    static let transactionHistoryDetailsAPI = "api2/merchantTransactionHistorySingle.php?"
     static let archiveTransactionAPI = "api2/archiveTransaction.php?"
     static let PAY_WITH_POINTS_API = "api/updatePayableByPoints.php?"
     
@@ -92,4 +103,30 @@ struct URLContstants {
     static let deleteAccountPass = "kjf93j9asr10"
 
     static let SCANNED_DETAIL_URL = "ecom/useCoupon.php?"
+    
+    //MARK: Daily check
+    static let dailyCheckListAPI = "api2/get_daily_check_in_rewards.php?"
+    static let dailyCheckedInAPI = "api2/daily_check_in_rewards.php?"
+
+    //MARK: Stamp Rewards
+    static let stampRewardsListAPI = "api2/get_stamp_rewards.php?"
+    static let stampRewardsCheckedInAPI = "api2/stamp_rewards.php?"
+
+    static let applytTourist_API = "api2/makeCustomerTourist.php?"
+
+    //MARK: Country and States APIS
+    static let getCountryListAPI = "api/countryList.php?"
+    static let getCountryCodesListAPI = "api/getCountryCodes.php?"
+    static let getBranchStatesAPI = "api/branch_states.php?"
+    static let getCitiesAPI = "api/branch_city.php?"
+    static let getRelatedBranchesAPI = "api/getBranches.php?"
+    
+    //MARK: Feedback
+    static let supportAPI = "information/support_mailer.php?"
+    
+    
+    //MARK: Feedback
+    static let referralRewardAPI = "api2/getReferralRewardData.php?"
+    
+    
 }

@@ -8,14 +8,14 @@
 import Foundation
 
 public struct KeychainKeys {
-    static let refreshToken = "refreshToken"
-    static let accessToken = "accessToken"
-    static let deviceModel = "deviceModel"
-    static let deviceId = "deviceId"
+    public static let refreshToken = "refreshToken"
+    public static let accessToken = "accessToken"
+    public static let deviceModel = "deviceModel"
+    public static let deviceId = "deviceId"
     
-    static let custid = "custid"
-    static let appversion = "appversion"
-    static let apilogs = "apilogs"
+    public static let custid = "custid"
+    public static let appversion = "appversion"
+    public static let apilogs = "apilogs"
     
-    static let mallId = "mallid"
+    public static let mallId = "mallid"
 }
