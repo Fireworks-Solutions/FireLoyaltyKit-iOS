@@ -189,11 +189,11 @@ public final class RewardsClient {
     //MARK: Gift Check out API
     public func callShippingPointsApi(
         param : [String:Any],
-        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onSuccess: @escaping (ShipPointsResponse) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.get_shipping_points, params: param, responseType: GeneralResponseModel.self) { result in
+        network.post(URLContstants.get_shipping_points, params: param, responseType: ShipPointsResponse.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)

@@ -37,7 +37,7 @@ public final class EventsClient {
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.eventsAPI, params: param, responseType: EventDetailsResponse.self) { result in
+        network.post(URLContstants.eventDetailsAPI, params: param, responseType: EventDetailsResponse.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)
@@ -49,11 +49,29 @@ public final class EventsClient {
     
     //MARK: MY RSVPs List
     public func getMyRsvpsList(
+        param : [String:Any] = [:],
         onSuccess: @escaping (MyRsvpsListResponse) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.RSVPListAPI, params: ["type":"event"], responseType: MyRsvpsListResponse.self) { result in
+        network.post(URLContstants.RSVPListAPI, params: param, responseType: MyRsvpsListResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    //MARK: MY Rewards List
+    public func getMultiMyRSVPList(
+        param : [String:Any] = [:],
+        onSuccess: @escaping (MyRsvpsListResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.RSVPMultiListAPI, params: param, responseType: MyRsvpsListResponse.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)

@@ -125,12 +125,13 @@ public struct DashboardReward: Codable ,Identifiable{
     public let mall: Int?
     public let cashPayment: Bool?
     public let cash: String?
+    public let points_raw: Int?
     public let mallName: String?
     public let label: String?
     public let labelInfo: LabelInfo?
 
     private enum CodingKeys: String, CodingKey {
-        case id, name, description, point, img, date, mall
+        case id, name, description, point, img, date, mall,points_raw
         case cashPayment  = "cash_payment"
         case cash
         case mallName     = "mall_name"

@@ -23,7 +23,7 @@ public struct THistoryMonthModel: Codable, Identifiable {
 
 
 public struct THistoryModel: Codable, Identifiable {
-    public var id: String
+    public var id: String?
     public var transaction_id: String?
     public var custid: String?
     public var name: String?

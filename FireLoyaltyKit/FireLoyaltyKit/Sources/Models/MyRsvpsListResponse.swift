@@ -13,7 +13,8 @@ public struct MyRsvpsListResponse: Codable {
     public let custname: String?
     public let end: Int?
     public let events: [RsvpListModel]?
-    public let points: Int?
+    public let wallet: [RsvpListModel]?
+    //public let points: Int?
     public let starts: Int?
     public let status: String?
     public let total: Int?
@@ -32,6 +33,9 @@ public struct RsvpListModel: Codable, Identifiable {
     public let status: String?
     public let type: String?
     public let units: Int?
+    public let redeem_status: Int?
+    public let gift_status: Int?
+    public let purchase_end : String?
 
     // Identifiable conformance
     public var identity: Int? { id }

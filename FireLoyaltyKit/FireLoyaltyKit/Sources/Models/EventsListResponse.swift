@@ -29,13 +29,13 @@ public struct EventListModel: Codable, Identifiable {
     public let expiry_date: String?
     public let id: Int?
     public let img: String?
-    public let is_rsvp: Int?
-    public let label: Int?
+    public let is_rsvp: Bool?
+    public let label: String?
     public let link: String?
     public let mall: Int?
     public let name: String?
-    public let open_link: Int?
+    public let open_link: Bool?
     public let point: String?
-    public let quantity: Int?
+    public let quantity: String?
 }
 

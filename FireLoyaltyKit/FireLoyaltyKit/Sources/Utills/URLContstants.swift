@@ -72,6 +72,7 @@ struct URLContstants {
     static let eventDetailsAPI = "api2/webview_eventDetails.php?";
     static let RSVPListAPI = "api2/webview_getWallet.php?";
     static let RSVPDetailsAPI = "api2/webview_getWalletDetails.php?";
+    static let RSVPMultiListAPI = "api2/webview_multiWalletList.php?";
     static let eventCheckOutAPI = "api2/event_checkout.php?";
    
     //MARK: PROMOTIONS

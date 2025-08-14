@@ -10,12 +10,13 @@ import Foundation
 
 /// Model for event checkout response
 public struct EventCheckOutModel: Codable {
-    public let balance: Int?
+    public let balance: String?
     public let code: String?
     public let message: String?
     public let points_spent: Int?
     public let redemption_id: Int?
     public let rsvp_id: Int?
+    public let walletid : Int?
     public let status: String?
 
     private enum CodingKeys: String, CodingKey {
@@ -24,5 +25,6 @@ public struct EventCheckOutModel: Codable {
         case redemption_id
         case rsvp_id
         case status
+        case walletid
     }
 }
