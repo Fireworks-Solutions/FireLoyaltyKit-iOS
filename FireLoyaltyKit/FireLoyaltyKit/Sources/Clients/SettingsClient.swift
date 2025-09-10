@@ -136,11 +136,11 @@ public final class SettingsClient {
     //MARK: getReferralRewardAPI
     public func getReferralRewardAPI(
         param : [String:Any],
-        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onSuccess: @escaping (InviteModel) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.referralRewardAPI, params: param, responseType: GeneralResponseModel.self) { result in
+        network.post(URLContstants.referralRewardAPI, params: param, responseType: InviteModel.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)
@@ -167,4 +167,20 @@ public final class SettingsClient {
         }
     }
     
+    //MARK: uploadeDirectReceiptAPI
+    public func uploadeDirectReceiptAPI(
+        param : [String:Any],
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.uploadDirectReceiptAPI, params: param, responseType: GeneralResponseModel.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
 }

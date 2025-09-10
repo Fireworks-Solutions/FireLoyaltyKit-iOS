@@ -21,8 +21,12 @@ struct URLContstants {
     static let REFRESH_TOKEN_API = "api2/refreshToken.php?"        // REFRESH TOKEN
      
     //MARK: REGISTER
+    static let registerV2API = "api2/registerV2.php?"
     static let registerEmailCheckAPI = "api2/checkEmail.php?" // Check email registered or not
     static let loginAPI = "api2/login.php?"                   // Login
+    static let checkPhoneNumberAPI = "api2/checkMobileNumber.php?"   
+    static let loginWithPhoneAPI = "api2/loginOtp.php?"
+    static let LoginWithOTPAPI = "api2/loginV2.php?"
     static let registerAPI = "api2/register.php?" // -> During Registration
     static let otpRegisterAPI = "api2/otp_register.php?" // -> During Login
     static let otpRegisterVerificationAPI = "api2/otp_register_verification.php?"
@@ -30,7 +34,11 @@ struct URLContstants {
     static let getPointDetailsPI = "api2/PointDetails.php?"
     
     static let changePasswordAPI = "api2/changepass.php?"     // Passwords
-    static let forgotPasswordAPI = "e-commerce/api/forgetPass.php?"
+    static let ResetPasswordAPI = "api/setPass.php?"
+    
+    static let resetPasswordVerifyOTPAPI = "e-commerce/api/sms_reset_otp_verification.php?"
+    static let resetPasswordSendOTPAPI = "e-commerce/api/forgetPass2.php?"
+    
     
     //MARK: DASHBOARD/HOME
     static let dashboardAPI = "api2/dashboard.php?"
@@ -66,6 +74,7 @@ struct URLContstants {
     static let myRewardsListAPI = "api2/webview_getWallet.php?";
     static let MultiRewardsListAPI = "api2/webview_multiWalletList.php?";
     static let myRewardDetailsAPI = "api2/webview_getWalletDetails.php?";
+    static let NearByRewards = "api2/nearby_rewards.php?"
     
     //MARK: EVENTS
     static let eventsAPI = "api2/webview_getEvents.php?";
@@ -104,6 +113,7 @@ struct URLContstants {
     static let deleteAccountPass = "kjf93j9asr10"
 
     static let SCANNED_DETAIL_URL = "ecom/useCoupon.php?"
+    static let uploadDirectReceiptAPI = "api2/uploadReceiptDirect.php?"
     
     //MARK: Daily check
     static let dailyCheckListAPI = "api2/get_daily_check_in_rewards.php?"

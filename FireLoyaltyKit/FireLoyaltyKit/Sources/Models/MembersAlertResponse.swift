@@ -20,7 +20,7 @@ public struct MembersAlertResponse: Codable {
 public struct MembersAlert: Codable ,Identifiable{
     public let  close_type: String?
     public let  content: String?
-    public let  id: String?
+    public let  id: Int?
     public let  image: String?
     public let  type: String?
     public let  url: String?

@@ -53,7 +53,7 @@ public struct THdetailsResponse: Codable, Identifiable {
 public struct ProductsList: Codable, Identifiable {
     public let id: String?
     public let name: String?
-    public let qty: String?
+    public let qty: Int?
     public let price: String?
 
 }

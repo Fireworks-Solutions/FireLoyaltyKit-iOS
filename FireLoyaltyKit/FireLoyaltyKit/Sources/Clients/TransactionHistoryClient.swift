@@ -79,4 +79,20 @@ public final class TransactionHistoryClient {
             }
         }
     }
+    
+    public func releasePointsAPI(
+        parameters: [String: Any],
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.Release_Points_API, params: parameters, responseType: GeneralResponseModel.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
 }

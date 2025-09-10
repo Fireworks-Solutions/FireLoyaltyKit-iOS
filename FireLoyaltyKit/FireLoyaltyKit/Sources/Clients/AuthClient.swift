@@ -74,7 +74,62 @@ public final class AuthClient {
     }
   }
     
+    public func sendOTPForLogin(param :[String:Any],
+                    onSuccess: @escaping (GeneralResponseModel) -> Void,
+                onError: @escaping (APIError) -> Void)
+  {
    
+      network.post(URLContstants.loginWithPhoneAPI, params: param, responseType: GeneralResponseModel.self) { result in
+      switch result {
+      case .success(let resp):
+        // 1) Persist tokens in Keychain
+          
+        DispatchQueue.main.async { onSuccess(resp) }
+
+      case .failure(let err):
+        DispatchQueue.main.async { onError(err) }
+      }
+    }
+  }
+    
+    public func loginVerifyWithOTP(param :[String:Any],
+                    onSuccess: @escaping (LoginResponse) -> Void,
+                onError: @escaping (APIError) -> Void)
+  {
+   
+      network.post(URLContstants.LoginWithOTPAPI, params: param, responseType: LoginResponse.self) { result in
+      switch result {
+      case .success(let resp):
+        // 1) Persist tokens in Keychain
+          
+          KeychainHelper.shared.save(resp.token ?? "", forKey: KeychainKeys.accessToken)
+          KeychainHelper.shared.save(resp.token ?? "", forKey: KeychainKeys.refreshToken)
+          KeychainHelper.shared.save(resp.custid ?? "", forKey: KeychainKeys.custid)
+
+        DispatchQueue.main.async { onSuccess(resp) }
+
+      case .failure(let err):
+        DispatchQueue.main.async { onError(err) }
+      }
+    }
+  }
+   
+    public func checkMobileNumber(
+        params: [String:Any],
+        onSuccess: @escaping (VerifyLoginResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+      network.post(URLContstants.checkPhoneNumberAPI, params: params, responseType: VerifyLoginResponse.self) { result in
+          
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
     //MARK: Fetch the current email status.
     /// - onSuccess: returns the decoded `GeneralResponseModel`
     /// - onError: returns the underlying `APIError`
@@ -166,6 +221,32 @@ public final class AuthClient {
           
           KeychainHelper.shared.save(resp.custid ?? "", forKey: KeychainKeys.custid)
 
+      case .failure(let err):
+        DispatchQueue.main.async { onError(err) }
+      }
+    }
+   }
+    
+    public func registerV2(param :[String:Any],
+                    onSuccess: @escaping (LoginResponse) -> Void,
+                onError: @escaping (APIError) -> Void)
+  {
+   
+      //var params: [String:Any] = param
+     
+//      let mm = AppUtills().createVC(date: (username + URLContstants.pvcSeKey))
+//      params["pvc"] = mm
+      
+    
+      network.post(URLContstants.registerV2API, params: param, responseType: LoginResponse.self) { result in
+      switch result {
+      case .success(let resp):
+        // 1) Persist tokens in Keychain
+          
+          KeychainHelper.shared.save(resp.token ?? "", forKey: KeychainKeys.accessToken)
+          KeychainHelper.shared.save(resp.token ?? "", forKey: KeychainKeys.refreshToken)
+          KeychainHelper.shared.save(resp.custid ?? "", forKey: KeychainKeys.custid)
+          
         DispatchQueue.main.async { onSuccess(resp) }
 
       case .failure(let err):
@@ -252,6 +333,73 @@ public final class AuthClient {
         params["token"] = token
     
       network.post(URLContstants.registerEmailCheckAPI, params: params, responseType: GeneralResponseModel.self) { result in
+          
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    public func changePasswordAPI(
+        params: [String:Any],
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+      network.post(URLContstants.changePasswordAPI, params: params, responseType: GeneralResponseModel.self) { result in
+          
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    public func resetPasswordAPI(
+        params: [String:Any],
+        onSuccess: @escaping (LoginResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+      network.post(URLContstants.ResetPasswordAPI, params: params, responseType: LoginResponse.self) { result in
+          
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    public func resetPasswordSendOTPAPI(
+        params: [String:Any],
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+      network.post(URLContstants.resetPasswordSendOTPAPI, params: params, responseType: GeneralResponseModel.self) { result in
+          
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    public func resetPasswordVerifyOTPAPI(
+        params: [String:Any],
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+      network.post(URLContstants.resetPasswordVerifyOTPAPI, params: params, responseType: GeneralResponseModel.self) { result in
           
             switch result {
             case .success(let model):

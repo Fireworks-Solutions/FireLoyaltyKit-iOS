@@ -10,12 +10,12 @@ public struct RewardsListResponse: Codable {
     public let custname: String?
     public let end: Int?
     public let location: [Location]?
-    public let points: Int?
     public let rewards: [RewardListModel]?
     public let starts: Int?
     public let status: String?
     public let message : String?
     public let total: Int?
+    public let API_TITLE : String?
 }
 
 // MARK: - Location

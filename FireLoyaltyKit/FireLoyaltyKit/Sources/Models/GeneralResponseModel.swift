@@ -13,5 +13,6 @@ public struct GeneralResponseModel: Codable {
     public let logout : String?
     public let logout_message : String?
     public let points : String?
+    public let custid : String?
     public let url : String?
 }

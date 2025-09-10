@@ -32,6 +32,21 @@ public final class RewardsClient {
         }
     }
     
+    public func getNearByRewardsList(
+        param : [String:Any] = [:],
+        onSuccess: @escaping (RewardsListResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.NearByRewards, params: param, responseType: RewardsListResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
     //MARK: Reward Details
     public func getRewardDetails(
         param : [String:Any],
