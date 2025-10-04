@@ -25,6 +25,9 @@ public struct MerchantDetailsModel: Codable {
     public var address: String?
     public var contact: String?
     public var weburl: String?
+    public var email: String?
+    public var logo: String?
+    public var total_voucher : String?
     public var fav_icon: String?
     public var faq: String?
     public var term_conditions: String?

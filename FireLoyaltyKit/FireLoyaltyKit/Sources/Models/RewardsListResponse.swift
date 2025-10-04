@@ -39,6 +39,7 @@ public struct RewardListModel: Codable ,Identifiable{
     public let id: Int?
     public let img: String?
     public let is_donation: Bool?
+    public let validity_days: String?
     public let label: String?
     public let label_info: LabelInfo?
     public let mall: Int?
@@ -48,5 +49,7 @@ public struct RewardListModel: Codable ,Identifiable{
     public let points_raw: Int?
     public let quantity: String?
     public let redeem_loc: String?
+    public let validity_info : ValidityInfo?
+    public let is_premium: Bool?
 }
 

@@ -27,8 +27,10 @@ public struct MyRewardDetail: Codable, Identifiable {
     public let gift_status: Int?
     public let id: Int?
     public let is_donation: Bool?
+    public var validity_days: String?
     public let mall: Int?
     public let mall_name: String?
+    public let time: String?
     public let merchant_info: [MerchantInfo]?
     public let merchant_name: String?
     public let merchantid: Int?
@@ -53,9 +55,31 @@ public struct MyRewardDetail: Codable, Identifiable {
     public let validity: String?
     public let validity_message: String?
     public let wallet_id: String?
-
+    public let timer : Bool?
+    public var tnc : String?
     public let delivery_info: String?
     public let tracking_info: String?
     public let shipping_status: String?
+    public let used_msg : String?
+    public let participant_outlet_count : Int?
+    public let ins_title : String?
+    public let ins_desc : String?
+    public let is_third_party : Bool?
+    public let third_party_redirect : String?
+    public let validity_info : ValidityInfo?
+    public let is_premium: Bool?
 }
 
+/*
+ "validity_info": {
+                 "text_color": "#FF0000",
+                 "prefix": "Used",
+                 "sufix": "2 days ago"
+             },
+ */
+public struct ValidityInfo: Codable {
+    public let text_color: String?
+    public let prefix: String?
+    public let sufix: String?
+    
+}

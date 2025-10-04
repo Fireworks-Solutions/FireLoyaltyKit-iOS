@@ -30,6 +30,7 @@ public struct EventDetail: Codable, Identifiable {
     public let longitude: String?
     public let mall: Int?
     public let merchantid: String?
+    public let time : String?
     public let more_details: String?
     public let points: String?
     public let purchase_end: String?

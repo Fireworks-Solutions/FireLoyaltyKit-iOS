@@ -11,7 +11,7 @@ import Foundation
 // MARK: - DashboardResponse
 public struct DashboardResponse: Codable {
     public let gotProfile: String?
-    public let profile: String?
+    public let profile: ProfileResult?
     public let status: String?
     public let message: String?
     public let custname: String?
@@ -51,10 +51,12 @@ public struct Tenant: Codable ,Identifiable{
     public let description: String?
     public let location: String?
     public let featuredImg: String?
+    public let logo: String?
     public let createdAt: String?
+    public let total_reward : Int?
 
     private enum CodingKeys: String, CodingKey {
-        case id, title, description, location
+        case id, title, description, location ,total_reward ,logo
         case featuredImg = "featured_img"
         case createdAt   = "created_at"
     }
@@ -127,11 +129,13 @@ public struct DashboardReward: Codable ,Identifiable{
     public let cash: String?
     public let points_raw: Int?
     public let mallName: String?
+    public let validity_days: String?
     public let label: String?
     public let labelInfo: LabelInfo?
+    public let validity_info : ValidityInfo?
 
     private enum CodingKeys: String, CodingKey {
-        case id, name, description, point, img, date, mall,points_raw
+        case id, name, description, point, img, date, mall,points_raw,validity_days,validity_info
         case cashPayment  = "cash_payment"
         case cash
         case mallName     = "mall_name"

@@ -81,6 +81,7 @@ public struct ProfileResult: Codable, Identifiable {
     public let showPayButton: Bool?
     public let countdownTimer: Int?
     public let payPointsEnabled: Bool?
+    public let pointsExpiry: [PointsExpiryModel]?
 
     private enum CodingKeys: String, CodingKey {
         case customerStatus    = "customer_status"
@@ -128,6 +129,7 @@ public struct ProfileResult: Codable, Identifiable {
         case showPayButton     = "show_pay_button"
         case countdownTimer    = "countdown_timer"
         case payPointsEnabled  = "paypointsenabled"
+        case pointsExpiry  = "points_expiry"
     }
 }
 
@@ -154,3 +156,43 @@ public struct GetSettingModel: Codable {
     // public let someFlag: Bool?
     // public let anotherSetting: String?
 }
+
+/*
+ "points_expiry": [
+             {
+                 "expiry_points": 0,
+                 "expiry_text": "pts will expire on",
+                 "expiry_date": "Oct 2025",
+                 "expiry_content": "0 pts will expire on Oct 2025"
+             },
+             {
+                 "expiry_points": 0,
+                 "expiry_text": "pts will expire on",
+                 "expiry_date": "Nov 2025",
+                 "expiry_content": "0 pts will expire on Nov 2025"
+             },
+             {
+                 "expiry_points": 0,
+                 "expiry_text": "pts will expire on",
+                 "expiry_date": "Dec 2025",
+                 "expiry_content": "0 pts will expire on Dec 2025"
+             }
+         ],
+ */
+
+// MARK: –– PointsExpiryModel
+public struct PointsExpiryModel: Codable, Identifiable {
+    public let id = UUID()  // Unique identifier for Identifiable conformance
+    public let expiryPoints: Int?
+    public let expiryText: String?
+    public let expiryDate: String?
+    public let expiryContent: String?
+
+    private enum CodingKeys: String, CodingKey {
+        case expiryPoints = "expiry_points"
+        case expiryText   = "expiry_text"
+        case expiryDate   = "expiry_date"
+        case expiryContent = "expiry_content"
+    }
+}
+

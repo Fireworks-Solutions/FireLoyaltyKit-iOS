@@ -116,6 +116,54 @@ public final class SettingsClient {
         }
     }
     
+    public func getPurchasedCountAPI(
+        param : [String:Any],
+        onSuccess: @escaping (PurchasedCountResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.GET_PURCHASED_COUNT_API, params: param, responseType: PurchasedCountResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    public func getSalutationAPI(
+        param : [String:Any],
+        onSuccess: @escaping (SalutationResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.getSaluationAPI, params: param, responseType: SalutationResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    public func getSupportTicketTypeListAPI(
+        param : [String:Any],
+        onSuccess: @escaping (SupportTicketListResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.supportTicketListAPI, params: param, responseType: SupportTicketListResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
     //MARK: getNotificationList
     public func callNotificationActionAPI(
         param : [String:Any],
@@ -175,6 +223,22 @@ public final class SettingsClient {
     ) {
         
         network.post(URLContstants.uploadDirectReceiptAPI, params: param, responseType: GeneralResponseModel.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    public func readAllNotifications(
+        parameters: [String: Any],
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.readAllNotificationsAPI, params: parameters, responseType: GeneralResponseModel.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)

@@ -47,6 +47,22 @@ public final class EventsClient {
         }
     }
     
+    //MARK: Categories
+    public func getEventCategoriesList(
+        param : [String:Any] = [:],
+        onSuccess: @escaping (CategoryResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.eventsCategoriesAPI, params: param, responseType: CategoryResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
     //MARK: MY RSVPs List
     public func getMyRsvpsList(
         param : [String:Any] = [:],
@@ -63,6 +79,8 @@ public final class EventsClient {
             }
         }
     }
+    
+    
     
     //MARK: MY Rewards List
     public func getMultiMyRSVPList(

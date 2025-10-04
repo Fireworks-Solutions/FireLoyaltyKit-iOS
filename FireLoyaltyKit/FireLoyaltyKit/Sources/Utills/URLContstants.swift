@@ -45,12 +45,14 @@ struct URLContstants {
     static let usefullLinkAPI = "api2/usefullinks.php?"
     static let MallsAPI = "api/malllist.php?"
     static let MEMBERS_LIST_API = "api2/member_alertList.php?"
+    static let GET_PURCHASED_COUNT_API = "api2/purchased_count.php?"
     
     //MARK: PROFILE
     static let GET_PROFILE = "api2/profile.php?"
     static let UPDATE_PROFILE = "api2/updateProfile.php?"
     static let profileImageAPI = "api2/getProfileImage.php"
     static let updateProfilePicAPI = "api2/uploadProfilePic.php?"
+    static let getSaluationAPI = "api2/get_salutation.php?"
     
     //MARK: NOTIFICATIONS
     static let deviceTokenAPI = "api2/addDeviceToken.php?"
@@ -59,11 +61,21 @@ struct URLContstants {
     static let getNotificationsAPI = "api2/getNotifications.php?"
     static let getInboxAPI = "api/inbox_listing.php?"
     static let inboxActionAPI = "api2/inbox_action.php?"
+    //https://tropicana.mycrm.asia/loyalty/api/clear_all_noti.php?custid=1
+    static let readAllNotificationsAPI = "api2/clear_all_noti.php?"
+    
+    //MARK: PRIVILEGES
+    static let PRIVILEGES_DASHBOARD = "api2/privileges_dashboard.php?"
+    static let PRIVILEGES_RANKS_INFO = "api2/getRankInfo.php?"
     
     //MARK: REWARDS
     static let rewardsListAPI = "api2/webview_getRewards.php?";
+    static let SearchRewardsAPI = "api2/searchByRewards.php?";
+    static let rewardsListV2API = "api2/webview_getRewardsV2.php?";
     static let rewardDetailsAPI = "api2/webview_getDetails.php?";
     static let checkOutApi = "api2/checkout.php?";
+    static let rewardCategoriesV2 = "api2/categoriesV2.php?";
+    static let rewardTimerAPI = "api2/timer_reward.php?";
     
     //MARK: Gift redemption
     static let get_shipping_points = "api2/get_shipping_points.php?"
@@ -75,9 +87,12 @@ struct URLContstants {
     static let MultiRewardsListAPI = "api2/webview_multiWalletList.php?";
     static let myRewardDetailsAPI = "api2/webview_getWalletDetails.php?";
     static let NearByRewards = "api2/nearby_rewards.php?"
+    static let getRewardMerchantsAPI = "api2/getDirectoryListReward.php?"
+   
     
     //MARK: EVENTS
     static let eventsAPI = "api2/webview_getEvents.php?";
+    static let eventsCategoriesAPI = "api2/event_categories.php?";
     static let eventDetailsAPI = "api2/webview_eventDetails.php?";
     static let RSVPListAPI = "api2/webview_getWallet.php?";
     static let RSVPDetailsAPI = "api2/webview_getWalletDetails.php?";
@@ -91,6 +106,7 @@ struct URLContstants {
     //MARK: DIRECTORY
     static let getDirectoryAPI = "api2/getDirectoryList.php?"
     static let getMerchantDetail = "api2/webview_aboutMerchant.php?"
+    static let getMerchantCategories = "api2/merchant_categories.php?"
     static let getCategoryAPI = "api2/categories.php?"
     static let getBranchesAPI = "api2/webview_getBranches.php?";
     
@@ -134,10 +150,12 @@ struct URLContstants {
     
     //MARK: Feedback
     static let supportAPI = "information/support_mailer.php?"
+    static let supportTicketListAPI = "api/support_type.php?"
     
     
     //MARK: Feedback
     static let referralRewardAPI = "api2/getReferralRewardData.php?"
     
+    static let aboutUsAPI = "api/webview_aboutus.php?"
     
 }

@@ -50,4 +50,5 @@ public struct RsvpDetail: Codable, Identifiable {
     public let validity: String?
     public let validity_message: String?
     public let wallet_id: String?
+    public let time: String?
 }

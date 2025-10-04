@@ -12,6 +12,7 @@ import Foundation
 public struct EventsListResponse: Codable {
     public let custname: String?
     public let events: [EventListModel]?
+    public let featured_events: [EventListModel]?
     public let location: [Location]?
     public let points: Int?
     public let status: String?
@@ -35,6 +36,7 @@ public struct EventListModel: Codable, Identifiable {
     public let mall: Int?
     public let name: String?
     public let open_link: Bool?
+    public let address: String?
     public let point: String?
     public let quantity: String?
 }

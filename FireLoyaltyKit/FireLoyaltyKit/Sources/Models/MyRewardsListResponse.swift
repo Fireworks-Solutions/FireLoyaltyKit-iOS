@@ -32,9 +32,10 @@ public struct MyRewardsListModel: Codable ,Identifiable{
     public let status: String?
     public let type: String?
     public let units: Int?
-    
+    public let validity_days: String?
     public let points_raw: Int?
-    
+    public let validity_info : ValidityInfo?
+    public let is_premium: Bool?
     // Multi Rewards
     public let purchase_end: String?
     public let redeem_status: Int?

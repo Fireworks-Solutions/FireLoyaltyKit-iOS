@@ -32,6 +32,38 @@ public final class RewardsClient {
         }
     }
     
+    public func getRewardsV2List(
+        param : [String:Any] = [:],
+        onSuccess: @escaping (RewardsListResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.rewardsListV2API, params: param, responseType: RewardsListResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    public func searchRewardsList(
+        param : [String:Any] = [:],
+        onSuccess: @escaping (RewardsListResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.SearchRewardsAPI, params: param, responseType: RewardsListResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
     public func getNearByRewardsList(
         param : [String:Any] = [:],
         onSuccess: @escaping (RewardsListResponse) -> Void,
@@ -81,6 +113,38 @@ public final class RewardsClient {
         }
     }
     
+    public func getRewardsV2CategoryList(
+        param : [String:Any] = [:],
+        onSuccess: @escaping (CategoryResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.rewardCategoriesV2, params: param, responseType: CategoryResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    public func getRewardMerchantsList(
+        param : [String:Any] = [:],
+        onSuccess: @escaping (MerchantListResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.getRewardMerchantsAPI, params: param, responseType: MerchantListResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
     //MARK: MY Rewards List
     public func getMyRewardsList(
         param : [String:Any] = [:],
@@ -97,6 +161,8 @@ public final class RewardsClient {
             }
         }
     }
+    
+   
     
     //MARK: MY Rewards List
     public func getMultiRewardsList(
@@ -150,6 +216,21 @@ public final class RewardsClient {
     }
     
     
+    public func getRewardTimerAPI(
+        param : [String:Any] = [:],
+        onSuccess: @escaping (TimerRewardResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.rewardTimerAPI, params: param, responseType: TimerRewardResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
     //MARK: Stamp Rewards List API
     public func getStampRewardsList(
         param : [String:Any],

@@ -164,7 +164,7 @@ public final class NetworkClient {
         var param: [String:Any] = params
         param["date"] = date
         param["vc"] = vc
-        param["mercid"] = "44"
+        //param["mercid"] = "44"
         param["sectoken"] = KeychainHelper.shared.read(KeychainKeys.accessToken) ?? ""
         param["custid"] = KeychainHelper.shared.read(KeychainKeys.custid) ?? ""
         param["lang"] = "en"

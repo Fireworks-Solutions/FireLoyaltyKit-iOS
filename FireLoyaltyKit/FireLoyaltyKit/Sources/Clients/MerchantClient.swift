@@ -32,6 +32,22 @@ public final class MerchantClient {
         }
     }
     
+    public func getMerchantCategories(
+        parameters: [String: Any] = [:],
+        onSuccess: @escaping (MerchantCategoryResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.getMerchantCategories, params: parameters, responseType: MerchantCategoryResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
     public func getMerchantDetails(
         parameters: [String: Any],
         onSuccess: @escaping (MerchantDetailsResponse) -> Void,

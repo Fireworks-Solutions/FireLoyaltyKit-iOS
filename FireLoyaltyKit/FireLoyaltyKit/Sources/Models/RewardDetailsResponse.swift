@@ -26,13 +26,15 @@ public struct RewardDetail: Codable, Identifiable {
         public var featured_image: String?
         
         public var validity: String?
+        public var validity_days: String?
         public var validity_message: String?
         public var points: String?
         public var point: String?
         public var points_raw: Int?
         public var purchase_start: String?
         public var purchase_end: String?
-        
+        public var tnc : String?
+        public var participant_outlet_count : Int?
         public var redeem_start: String?
         public var redeem_end: String?
         public var button_status: Bool?
@@ -67,9 +69,16 @@ public struct RewardDetail: Codable, Identifiable {
         public var rewards_given: [GivenRewardsModel]?
         public var is_rsvp: Bool?
     
-    // Conform to Identifiable
-    public var identity: String? { id }
-    public var uuid: UUID { UUID() }
+        public let ins_title : String?
+        public let ins_desc : String?
+        public let is_third_party : Bool?
+        public let third_party_redirect : String?
+        public let validity_info : ValidityInfo?
+        public let is_premium: Bool?
+    
+        // Conform to Identifiable
+        public var identity: String? { id }
+        public var uuid: UUID { UUID() }
 }
 
 /// Collection method option
