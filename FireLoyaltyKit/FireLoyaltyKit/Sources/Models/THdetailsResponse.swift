@@ -49,7 +49,7 @@ public struct THdetailsResponse: Codable, Identifiable {
     public let transaction_type: String?
     public let total_transaction: String?
     public let message: String?
-    public let icon: String?
+    
 }
 
 

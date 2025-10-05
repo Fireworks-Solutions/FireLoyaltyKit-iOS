@@ -41,5 +41,6 @@ public struct THistoryModel: Codable, Identifiable {
     public var status: String?
     public var purchase_value: String?
     public var points_label: String?
+    public var icon: String?
 
 }
