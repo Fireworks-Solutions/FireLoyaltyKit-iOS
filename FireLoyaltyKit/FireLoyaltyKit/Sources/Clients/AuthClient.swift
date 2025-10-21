@@ -79,7 +79,7 @@ public final class AuthClient {
                 onError: @escaping (APIError) -> Void)
   {
    
-      network.post(URLContstants.loginWithPhoneAPI, params: param, responseType: GeneralResponseModel.self) { result in
+      network.post(URLContstants.loginWithEmailAPI, params: param, responseType: GeneralResponseModel.self) { result in
       switch result {
       case .success(let resp):
         // 1) Persist tokens in Keychain
@@ -97,7 +97,7 @@ public final class AuthClient {
                 onError: @escaping (APIError) -> Void)
   {
    
-      network.post(URLContstants.LoginWithOTPAPI, params: param, responseType: LoginResponse.self) { result in
+      network.post(URLContstants.LoginWithEmailOTPVerifyAPI, params: param, responseType: LoginResponse.self) { result in
       switch result {
       case .success(let resp):
         // 1) Persist tokens in Keychain
@@ -197,6 +197,46 @@ public final class AuthClient {
             }
         }
     }
+    
+    public func registerEmailOTPAPI(
+        params: [String:Any],
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+      network.post(URLContstants.registerWithEmailSendOTPAPI, params: params, responseType: GeneralResponseModel.self) { result in
+          
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    //MARK: Regiter OTP verification
+    /// - Parameters:
+    ///   - params: params description
+    ///   - onSuccess: onSuccess description
+    ///   - onError: onError description
+    public func registerEmailOTPVerificationAPI(
+        params: [String:Any],
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+      network.post(URLContstants.registerWithEmailVerifyOTPAPI, params: params, responseType: GeneralResponseModel.self) { result in
+          
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
     
     //MARK: Register User
     /// - Parameters:

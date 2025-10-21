@@ -49,6 +49,7 @@ public struct EventDetail: Codable, Identifiable {
     public let title: String?
     public let validity: String?
     public let validity_message: String?
+    public let has_dob: Bool?
     public let rewards_given : [GivenRewardsModel]?
 }
 

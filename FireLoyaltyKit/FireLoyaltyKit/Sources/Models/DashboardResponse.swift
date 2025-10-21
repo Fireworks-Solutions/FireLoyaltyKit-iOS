@@ -18,20 +18,21 @@ public struct DashboardResponse: Codable {
     public let payPointsEnabled: Bool?
     public let custType: String?
     public let points: String?
-    public let tenants: [Tenant]
-    public let news: [Promotion]
-    public let membersNews: [MemberNews]
-    public let bannerNews: [BannerNews]
-    public let promotions: [Promotion]
-    public let rewards: [DashboardReward]
-    public let hotDeals: [DashboardReward]
-    public let events: [Event]
+    public let tenants: [Tenant]?
+    public let news: [Promotion]?
+    public let magazines: [Promotion]?
+    public let membersNews: [MemberNews]?
+    public let bannerNews: [BannerNews]?
+    public let promotions: [Promotion]?
+    public let rewards: [DashboardReward]?
+    public let hotDeals: [DashboardReward]?
+    public let events: [Event]?
     public let showDailyCheckIn: Bool?
     
 
     private enum CodingKeys: String, CodingKey {
         case gotProfile   = "got_profile"
-        case profile, status, custname , message
+        case profile, status, custname , message ,magazines
         case payPointsEnabled = "paypointsenabled"
         case custType     = "cust_type"
         case points, tenants, news
@@ -104,9 +105,14 @@ public struct Promotion: Codable ,Identifiable{
     public let startDate: String?
     public let endDate: String?
     public let endDateText: String?
+    
+    public let content: String?
+    public let image: String?
+    public let external_link: String?
+    public let cat_title: String?
 
     private enum CodingKeys: String, CodingKey {
-        case id, title, description
+        case id, title, description , content , image , external_link , cat_title
         case featuredImg  = "featured_img"
         case createdAt    = "created_at"
         case mall
@@ -115,6 +121,7 @@ public struct Promotion: Codable ,Identifiable{
         case endDateText  = "end_date_text"
     }
 }
+
 
 // MARK: - Reward
 public struct DashboardReward: Codable ,Identifiable{

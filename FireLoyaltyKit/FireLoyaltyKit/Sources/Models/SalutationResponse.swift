@@ -10,6 +10,7 @@ import Foundation
 
 public struct SalutationResponse: Codable {
     public let status: String?
+    public let message: String?
     public let results: [Salutation]?
 }
 

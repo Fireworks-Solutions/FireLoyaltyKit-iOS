@@ -129,6 +129,38 @@ public final class RewardsClient {
         }
     }
     
+    public func getSearchRewardMerchantsListAPI(
+        param : [String:Any] = [:],
+        onSuccess: @escaping (SearchAPIResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.getSearchFilterAPI, params: param, responseType: SearchAPIResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    public func getNearByRewardsCategoryList(
+        param : [String:Any] = [:],
+        onSuccess: @escaping (CategoryResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.NearByRewardsCategories, params: param, responseType: CategoryResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
     public func getRewardMerchantsList(
         param : [String:Any] = [:],
         onSuccess: @escaping (MerchantListResponse) -> Void,

@@ -18,6 +18,7 @@ public struct RewardDetailsResponse: Codable {
 
 /// Individual reward detail entry
 public struct RewardDetail: Codable, Identifiable {
+    public var images: [String]?
     public var label: String?
         public var id: String? // used for Identifiable
         public var wallet_id: String?
@@ -75,7 +76,7 @@ public struct RewardDetail: Codable, Identifiable {
         public let third_party_redirect : String?
         public let validity_info : ValidityInfo?
         public let is_premium: Bool?
-    
+        public let has_dob: Bool?
         // Conform to Identifiable
         public var identity: String? { id }
         public var uuid: UUID { UUID() }

@@ -18,6 +18,7 @@ public struct MyRsvpsListResponse: Codable {
     public let starts: Int?
     public let status: String?
     public let total: Int?
+    public let message: String?
 }
 
 /// Individual RSVP entry

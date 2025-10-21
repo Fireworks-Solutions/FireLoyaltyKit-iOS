@@ -68,6 +68,7 @@ public struct MyRewardDetail: Codable, Identifiable {
     public let third_party_redirect : String?
     public let validity_info : ValidityInfo?
     public let is_premium: Bool?
+    public var images: [String]?
 }
 
 /*

@@ -14,6 +14,7 @@ public struct MyRsvpDetailsResponse: Codable {
     public let details: [RsvpDetail]?
     public let shared_message: String?
     public let status: String?
+    public let message: String?
 }
 
 /// Detailed information for an individual RSVP

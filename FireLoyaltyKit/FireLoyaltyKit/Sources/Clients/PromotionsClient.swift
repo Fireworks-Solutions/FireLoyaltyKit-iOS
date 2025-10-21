@@ -47,4 +47,70 @@ public final class PromotionsClient {
             }
         }
     }
+    
+    public func getArticlesList(
+        parameters: [String: Any] = [:],
+        onSuccess: @escaping (ArticlesListResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.articlesListAPI, params: parameters, responseType: ArticlesListResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    public func getArticleDetails(
+        parameters: [String: Any],
+        onSuccess: @escaping (ArticleDetailResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.articleDetailsAPI, params: parameters, responseType: ArticleDetailResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    public func getArticleCategory(
+        parameters: [String: Any],
+        onSuccess: @escaping (CategoryResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.articleCategoriesAPI, params: parameters, responseType: CategoryResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    public func getNewsCategory(
+        parameters: [String: Any],
+        onSuccess: @escaping (CategoryResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.newsCategoryDetailsAPI, params: parameters, responseType: CategoryResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    
 }

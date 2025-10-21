@@ -12,6 +12,7 @@ public struct PromotionDetailResponse: Codable {
     public let  status: String?
     public let  message: String?
     public let  news: [PromotionDetailModel]?
+   
 }
 
 public struct PromotionDetailModel: Codable ,Identifiable{
@@ -19,11 +20,16 @@ public struct PromotionDetailModel: Codable ,Identifiable{
     public let  title: String?
     public let  description: String?
     public let  featured_img: String?
+    public let  category: String?
     public let  link: String?
     public let  start_date: String?
     public let  end_date: String?
+    public let  end_date_text: String?
+    public let  contact_us : String?
     public let  location: String?
     public let  created_at: String?
     public let  mall: Int?
     public let  share_link: String?
+    
+    
 }

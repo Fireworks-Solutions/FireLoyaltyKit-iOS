@@ -51,5 +51,6 @@ public struct RewardListModel: Codable ,Identifiable{
     public let redeem_loc: String?
     public let validity_info : ValidityInfo?
     public let is_premium: Bool?
+    public let distance: String?
 }
 

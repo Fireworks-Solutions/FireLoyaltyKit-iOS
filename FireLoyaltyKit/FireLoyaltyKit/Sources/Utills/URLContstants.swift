@@ -22,7 +22,7 @@ struct URLContstants {
      
     //MARK: REGISTER
     static let registerV2API = "api2/registerV2.php?"
-    static let registerEmailCheckAPI = "api2/checkEmail.php?" // Check email registered or not
+    static let registerEmailCheckAPI = "api2/checkEmailLogin.php?" // Check email registered or not
     static let loginAPI = "api2/login.php?"                   // Login
     static let checkPhoneNumberAPI = "api2/checkMobileNumber.php?"   
     static let loginWithPhoneAPI = "api2/loginOtp.php?"
@@ -32,6 +32,12 @@ struct URLContstants {
     static let otpRegisterVerificationAPI = "api2/otp_register_verification.php?"
     static let giveRewardsPoints = "api2/giveRewardPoints.php?"
     static let getPointDetailsPI = "api2/PointDetails.php?"
+    
+    static let loginWithEmailAPI = "api2/sendEmailOtp.php?"
+    static let LoginWithEmailOTPVerifyAPI = "api2/loginEmail.php?"
+    
+    static let registerWithEmailSendOTPAPI = "api2/registerEmailOtp.php?"
+    static let registerWithEmailVerifyOTPAPI = "api2/registerEmailOtpVerify.php?"
     
     static let changePasswordAPI = "api2/changepass.php?"     // Passwords
     static let ResetPasswordAPI = "api/setPass.php?"
@@ -87,8 +93,9 @@ struct URLContstants {
     static let MultiRewardsListAPI = "api2/webview_multiWalletList.php?";
     static let myRewardDetailsAPI = "api2/webview_getWalletDetails.php?";
     static let NearByRewards = "api2/nearby_rewards.php?"
+    static let NearByRewardsCategories = "api2/categories_nearby.php?"
     static let getRewardMerchantsAPI = "api2/getDirectoryListReward.php?"
-   
+    static let getSearchFilterAPI = "api2/searchFilter.php?"
     
     //MARK: EVENTS
     static let eventsAPI = "api2/webview_getEvents.php?";
@@ -102,6 +109,13 @@ struct URLContstants {
     //MARK: PROMOTIONS
     static let promotionsListAPI = "api2/getNews.php?";
     static let promotionDetailsAPI = "api2/getNewsDetails.php?";
+    static let newsCategoryDetailsAPI = "api2/getAllNewsCategory.php?";
+    
+    //MARK: ARTICLES
+    static let articlesListAPI = "api2/getArticle.php?";
+    static let articleDetailsAPI = "api2/getArticleById.php?";
+    static let articleCategoriesAPI = "api2/getArticleCategories.php?";
+    
     
     //MARK: DIRECTORY
     static let getDirectoryAPI = "api2/getDirectoryList.php?"
