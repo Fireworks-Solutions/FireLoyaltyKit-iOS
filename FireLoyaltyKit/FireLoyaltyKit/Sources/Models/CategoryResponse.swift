@@ -16,6 +16,7 @@ public struct CategoryResponse: Codable {
     public let rewards_type : [CategoryModel]?
     public let category : [CategoryModel]?
     public let categoryid : [CategoryModel]?
+    public let states : [CategoryModel]?
     public let status: String?
     public let message: String?
 }
