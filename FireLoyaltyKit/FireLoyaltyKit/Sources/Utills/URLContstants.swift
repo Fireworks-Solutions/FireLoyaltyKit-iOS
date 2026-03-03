@@ -36,6 +36,16 @@ struct URLContstants {
     static let loginWithEmailAPI = "api2/sendEmailOtp.php?"
     static let LoginWithEmailOTPVerifyAPI = "api2/loginEmail.php?"
     
+    // v3
+    /*
+     https://tropicana.mycrm.asia/loyalty/api/registerEmailOtp_V3.php
+     https://tropicana.mycrm.asia/loyalty/api/registerEmailOtpVerify_V3.php
+     https://tropicana.mycrm.asia/loyalty/api/registerV3.php
+     */
+    static let registerWithEmailSendOTPAPI_V3 = "api2/registerEmailOtp_V3.php?"
+    static let registerV3API = "api2/registerV3.php?"
+    static let registerWithEmailVerifyOTPAPI_V3 = "api2/registerEmailOtpVerify_V3.php?"
+    
     static let registerWithEmailSendOTPAPI = "api2/registerEmailOtp.php?"
     static let registerWithEmailVerifyOTPAPI = "api2/registerEmailOtpVerify.php?"
     
@@ -44,6 +54,8 @@ struct URLContstants {
     
     static let resetPasswordVerifyOTPAPI = "e-commerce/api/sms_reset_otp_verification.php?"
     static let resetPasswordSendOTPAPI = "e-commerce/api/forgetPass2.php?"
+    
+    
     
     
     //MARK: DASHBOARD/HOME

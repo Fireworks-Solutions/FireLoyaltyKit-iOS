@@ -215,6 +215,23 @@ public final class AuthClient {
         }
     }
     
+    public func registerEmailOTPAPIV3(
+        params: [String:Any],
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+      network.post(URLContstants.registerWithEmailSendOTPAPI_V3, params: params, responseType: GeneralResponseModel.self) { result in
+          
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
     //MARK: Regiter OTP verification
     /// - Parameters:
     ///   - params: params description
@@ -237,7 +254,22 @@ public final class AuthClient {
         }
     }
     
-    
+    public func registerEmailOTPVerificationAPIV3(
+        params: [String:Any],
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+      network.post(URLContstants.registerWithEmailVerifyOTPAPI_V3, params: params, responseType: GeneralResponseModel.self) { result in
+          
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
     //MARK: Register User
     /// - Parameters:
     ///   - param: param description
@@ -279,6 +311,35 @@ public final class AuthClient {
       
     
       network.post(URLContstants.registerV2API, params: param, responseType: LoginResponse.self) { result in
+      switch result {
+      case .success(let resp):
+        // 1) Persist tokens in Keychain
+          
+          KeychainHelper.shared.save(resp.token ?? "", forKey: KeychainKeys.accessToken)
+          KeychainHelper.shared.save(resp.token ?? "", forKey: KeychainKeys.refreshToken)
+          KeychainHelper.shared.save(resp.custid ?? "", forKey: KeychainKeys.custid)
+          
+        DispatchQueue.main.async { onSuccess(resp) }
+
+      case .failure(let err):
+        DispatchQueue.main.async { onError(err) }
+      }
+    }
+   }
+    
+    
+    public func registerV3(param :[String:Any],
+                    onSuccess: @escaping (LoginResponse) -> Void,
+                onError: @escaping (APIError) -> Void)
+  {
+   
+      //var params: [String:Any] = param
+     
+//      let mm = AppUtills().createVC(date: (username + URLContstants.pvcSeKey))
+//      params["pvc"] = mm
+      
+    
+      network.post(URLContstants.registerV3API, params: param, responseType: LoginResponse.self) { result in
       switch result {
       case .success(let resp):
         // 1) Persist tokens in Keychain
