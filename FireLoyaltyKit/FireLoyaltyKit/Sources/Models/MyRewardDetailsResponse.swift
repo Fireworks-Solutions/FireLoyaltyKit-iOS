@@ -69,6 +69,7 @@ public struct MyRewardDetail: Codable, Identifiable {
     public let validity_info : ValidityInfo?
     public let is_premium: Bool?
     public var images: [String]?
+    public var swipe_to_complete : Bool?
 }
 
 /*
