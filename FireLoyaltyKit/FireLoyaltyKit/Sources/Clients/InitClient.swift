@@ -89,4 +89,20 @@ public final class InitClient {
             }
         }
     }
+    
+    public func showAlertsQRCodeApi(
+        param : [String:Any] = [:],
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.deepLinkQrcodeAPI, params: param, responseType: GeneralResponseModel.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
 }

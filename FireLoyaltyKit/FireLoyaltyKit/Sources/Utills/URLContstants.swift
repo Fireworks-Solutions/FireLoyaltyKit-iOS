@@ -36,12 +36,7 @@ struct URLContstants {
     static let loginWithEmailAPI = "api2/sendEmailOtp.php?"
     static let LoginWithEmailOTPVerifyAPI = "api2/loginEmail.php?"
     
-    // v3
-    /*
-     https://tropicana.mycrm.asia/loyalty/api/registerEmailOtp_V3.php
-     https://tropicana.mycrm.asia/loyalty/api/registerEmailOtpVerify_V3.php
-     https://tropicana.mycrm.asia/loyalty/api/registerV3.php
-     */
+
     static let registerWithEmailSendOTPAPI_V3 = "api2/registerEmailOtp_V3.php?"
     static let registerV3API = "api2/registerV3.php?"
     static let registerWithEmailVerifyOTPAPI_V3 = "api2/registerEmailOtpVerify_V3.php?"
@@ -178,10 +173,12 @@ struct URLContstants {
     static let supportAPI = "information/support_mailer.php?"
     static let supportTicketListAPI = "api/support_type.php?"
     
-    
     //MARK: Feedback
     static let referralRewardAPI = "api2/getReferralRewardData.php?"
-    
     static let aboutUsAPI = "api/webview_aboutus.php?"
+    
+    //MARK: DEEPLINKING
+    static let deepLinkQrcodeAPI = "api/qr_get_message_image.php?"
+    
     
 }

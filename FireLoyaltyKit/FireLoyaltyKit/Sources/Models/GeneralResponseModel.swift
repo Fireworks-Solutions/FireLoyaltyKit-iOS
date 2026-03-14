@@ -15,4 +15,6 @@ public struct GeneralResponseModel: Codable {
     public let points : String?
     public let custid : String?
     public let url : String?
+    public let title : String?
+    public let image : String?
 }
