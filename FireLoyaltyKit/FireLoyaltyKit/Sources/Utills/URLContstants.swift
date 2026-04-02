@@ -146,7 +146,7 @@ struct URLContstants {
     static let setPasswordAPI = "api2/setPass.php?"
     
     //MARK: DELETE ACCOUNT
-    static let Delete_account_api = "api2/deleteCust.php?"
+    static let Delete_account_api = "api/deleteCust.php?"
     static let deleteAccountPass = "kjf93j9asr10"
 
     static let SCANNED_DETAIL_URL = "ecom/useCoupon.php?"

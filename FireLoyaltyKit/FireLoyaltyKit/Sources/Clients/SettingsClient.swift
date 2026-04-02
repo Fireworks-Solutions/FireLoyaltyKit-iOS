@@ -247,4 +247,20 @@ public final class SettingsClient {
             }
         }
     }
+    
+    public func deleteAccount(
+        parameters: [String: Any],
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.Delete_account_api, params: parameters, responseType: GeneralResponseModel.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
 }
