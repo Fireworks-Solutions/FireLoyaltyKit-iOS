@@ -89,6 +89,7 @@ struct URLContstants {
     static let checkOutApi = "api2/checkout.php?";
     static let rewardCategoriesV2 = "api2/categoriesV2.php?";
     static let rewardTimerAPI = "api2/timer_reward.php?";
+    static let transferVoucher = "api/transferVoucher.php?";
     
     //MARK: Gift redemption
     static let get_shipping_points = "api2/get_shipping_points.php?"
@@ -180,5 +181,8 @@ struct URLContstants {
     //MARK: DEEPLINKING
     static let deepLinkQrcodeAPI = "api/qr_get_message_image.php?"
     
-    
+    // MARK: Supplementary Card
+    static let getSupplementaryCards = "api/list_supplementary.php?"
+    static let addSupplementaryCard = "api/add_supplementary.php?"
+    static let switchMember = "api/autoLogin.php?"
 }
