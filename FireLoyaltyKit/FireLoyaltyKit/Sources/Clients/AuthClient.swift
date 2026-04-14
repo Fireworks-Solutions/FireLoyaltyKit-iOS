@@ -530,6 +530,7 @@ public struct LoginResponse: Decodable, Identifiable {
     public let url: String?
     public let token: String?
     public let reset: String?
+    public let parent_custid: String?
 
     private enum CodingKeys: String, CodingKey {
         case status, message, custid, name, fname
@@ -541,6 +542,7 @@ public struct LoginResponse: Decodable, Identifiable {
         case url
         case token
         case reset
+        case parent_custid
     }
 
     // If you want a default value for phone when the key is missing or null:
@@ -559,6 +561,7 @@ public struct LoginResponse: Decodable, Identifiable {
         url            = try container.decodeIfPresent(String.self, forKey: .url)
         token          = try container.decodeIfPresent(String.self, forKey: .token)
         reset          = try container.decodeIfPresent(String.self, forKey: .reset)
+        parent_custid  = try container.decodeIfPresent(String.self, forKey: .parent_custid)
     }
 }
 
