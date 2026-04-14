@@ -9,10 +9,10 @@ import Foundation
 
 public struct Country: Codable ,Identifiable, Equatable {
     public var id: String
-    let code: String
-    let name: String
-    let flag: String
-    let dial_code: String
-    let pattern: String
-    let limit: Int
+    public let code: String
+    public let name: String
+    public let flag: String
+    public let dial_code: String
+    public let pattern: String
+    public let limit: Int
 }
