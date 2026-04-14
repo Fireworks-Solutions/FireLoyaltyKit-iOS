@@ -14,4 +14,12 @@ public struct MembershipCardModel: Identifiable {
     public let tierIconSystemName: String
     public let phone: String
     public let memberName: String
+    
+    public init(cardImage: String, tierName: String, tierIconSystemName: String, phone: String, memberName: String) {
+        self.cardImage = cardImage
+        self.tierName = tierName
+        self.tierIconSystemName = tierIconSystemName
+        self.phone = phone
+        self.memberName = memberName
+    }
 }
