@@ -33,7 +33,7 @@ public struct SupplementaryCustomerModel: Codable, Identifiable, Equatable, Hash
     public let state: String?
     public let country: String?
     
-    init() {
+    public init() {
         self.custid = nil
         self.memberid = nil
         self.fname = nil
@@ -54,7 +54,7 @@ public struct SupplementaryCustomerModel: Codable, Identifiable, Equatable, Hash
         self.country = nil
     }
     
-    init(memberid: String, custid: String, fname: String, lname: String, email: String, phone: String, dob: String, points_transferable: Bool, rewards_transferable: Bool, relationship: String, relationship_other: String, gender: String, race: String, address: String, postcode: String, city: String, state: String, country: String) {
+    public init(memberid: String, custid: String, fname: String, lname: String, email: String, phone: String, dob: String, points_transferable: Bool, rewards_transferable: Bool, relationship: String, relationship_other: String, gender: String, race: String, address: String, postcode: String, city: String, state: String, country: String) {
         self.memberid = memberid
         self.custid = custid
         self.fname = fname
