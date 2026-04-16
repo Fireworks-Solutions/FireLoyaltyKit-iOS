@@ -330,4 +330,21 @@ public final class RewardsClient {
             }
         }
     }
+    
+    // MARK: Transfer Voucher
+    public func transferVoucher(
+        param : [String:Any] = [:],
+        onSuccess: @escaping (RewardsListResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.transferVoucher, params: param, responseType: RewardsListResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
 }
