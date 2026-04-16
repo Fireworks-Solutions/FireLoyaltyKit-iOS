@@ -12,6 +12,9 @@ public struct PromotionListResponse: Codable {
     public let  status: String?
     public let  news: [PromotionDetailModel]?
     public let  featured: [PromotionDetailModel]?
-    public let  total: Int?
     public let  message: String?
+    
+    public let starts: Int?
+    public let end: Int?
+    public let total: Int?
 }

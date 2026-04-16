@@ -13,12 +13,14 @@ public struct FireLoyaltyConfiguration {
         public let baseURL: URL
         public var enableDebug: Bool
     
-    public init(baseURL: URL,deviceId : String = "",deviceModel : String = "",version : String = "1.0.0",enableDebug: Bool = false) {
+    public init(baseURL: URL,deviceId : String = "",deviceModel : String = "",deviceType : String = "",version : String = "1.0.0",buildNumber : String = "",lang:String = "en",enableDebug: Bool = false) {
             self.baseURL = baseURL
         self.enableDebug = enableDebug
         KeychainHelper.shared.save(deviceId, forKey: KeychainKeys.deviceId)
         KeychainHelper.shared.save(deviceModel, forKey: KeychainKeys.deviceModel)
+        KeychainHelper.shared.save(deviceType, forKey: KeychainKeys.deviceType)
         KeychainHelper.shared.save(version, forKey: KeychainKeys.appversion)
-        
+        KeychainHelper.shared.save(buildNumber, forKey: KeychainKeys.buildNumber)
+        KeychainHelper.shared.save(lang, forKey: KeychainKeys.lang)
     }
 }

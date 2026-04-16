@@ -12,6 +12,9 @@ public struct TransactionHistoryResponse: Codable {
     public var status: String?
     public var message: String?
     public var result: [THistoryMonthModel]?
+    public let starts: Int?
+    public let end: Int?
+    public let total: Int?
 }
 
 

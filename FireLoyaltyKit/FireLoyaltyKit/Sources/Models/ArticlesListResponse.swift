@@ -11,6 +11,9 @@ public struct ArticlesListResponse: Codable {
     public let status: String?
     public let message: String?
     public let article: [ArticleListModel]?
+    public let starts: Int?
+    public let end: Int?
+    public let total: Int?
 }
 
 public struct ArticleListModel: Codable, Identifiable {

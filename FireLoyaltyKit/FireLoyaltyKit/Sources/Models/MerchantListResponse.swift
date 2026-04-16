@@ -11,6 +11,9 @@ public struct MerchantListResponse: Codable {
     public let status: String?
     public let message: String?
     public let results: [MerchantListModel]?
+    public let starts: Int?
+    public let end: Int?
+    public let total: Int?
 }
 /*
  var id : String?

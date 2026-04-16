@@ -32,6 +32,23 @@ public final class InitClient {
         }
     }
     
+    public func getAppBaseURL(
+        completeURL : String,
+        param : [String:Any] = [:],
+        onSuccess: @escaping (AppBaseURLResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.get(completeURL, responseType: AppBaseURLResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
     // MARK: Get Memebers list API
     /// - Parameters:
     ///   - param: param description

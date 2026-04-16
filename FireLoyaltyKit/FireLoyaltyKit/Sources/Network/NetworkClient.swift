@@ -167,10 +167,15 @@ public final class NetworkClient {
         //param["mercid"] = "44"
         param["sectoken"] = KeychainHelper.shared.read(KeychainKeys.accessToken) ?? ""
         param["custid"] = KeychainHelper.shared.read(KeychainKeys.custid) ?? ""
-        param["lang"] = "en"
+        param["lang"] = KeychainHelper.shared.read(KeychainKeys.lang) ?? "en"
         param["os"] = "iOS"
         param["deviceid"] = KeychainHelper.shared.read(KeychainKeys.deviceId) ?? ""
-        param["devicetype"] = KeychainHelper.shared.read(KeychainKeys.deviceModel) ?? ""
+        param["devicetype"] = KeychainHelper.shared.read(KeychainKeys.deviceType) ?? ""
+        param["devicemodel"] = KeychainHelper.shared.read(KeychainKeys.deviceModel) ?? ""
+        
+        param["app_version"] = KeychainHelper.shared.read(KeychainKeys.appversion) ?? ""
+        param["build_number"] = KeychainHelper.shared.read(KeychainKeys.buildNumber) ?? ""
+        
         param["mall"] = KeychainHelper.shared.read(KeychainKeys.mallId) ?? ""
         
         param["svc"] = URLContstants.secretKeyPass

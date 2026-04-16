@@ -36,6 +36,9 @@ struct URLContstants {
     static let loginWithEmailAPI = "api2/sendEmailOtp.php?"
     static let LoginWithEmailOTPVerifyAPI = "api2/loginEmail.php?"
     
+    static let loginWithEmailAPI_v4 = "api2/sendEmailOtp_v4.php?"
+    static let LoginWithEmailOTPVerifyAPI_v4 = "api2/loginEmail_v4.php?"
+    
 
     static let registerWithEmailSendOTPAPI_V3 = "api2/registerEmailOtp_V3.php?"
     static let registerV3API = "api2/registerV3.php?"
@@ -50,7 +53,15 @@ struct URLContstants {
     static let resetPasswordVerifyOTPAPI = "e-commerce/api/sms_reset_otp_verification.php?"
     static let resetPasswordSendOTPAPI = "e-commerce/api/forgetPass2.php?"
     
+    //SSO MIGRATION APIs
+    static let getSSOUserInfoAPI = "api2/getCognitoUser.php?"
+    static let checkSSOEmailExistAPI = "api2/checkCognitoEmail.php?"
     
+
+    static let checkEmailSSOAPI = "api2/checkEmailSso.php?"
+    static let registerWithEmailSendOTPAPI_V4 = "api2/registerEmailOtp_v4.php?"
+    static let registerWithEmailVerifyOTPAPI_V4 = "api2/registerEmailOtpVerify_v4.php?"
+    static let registerV4API = "api2/register_v4.php?"
     
     
     //MARK: DASHBOARD/HOME
