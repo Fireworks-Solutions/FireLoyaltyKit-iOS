@@ -1,0 +1,52 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xcodebuild:*)",
+      "Bash(swift:*)",
+      "Bash(swiftlint:*)",
+      "Bash(git:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(echo:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)"
+    ],
+    "deny": [
+      "Bash(rm -rf:*)",
+      "Bash(sudo:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ \"$(git branch --show-current)\" != \"main\" ] || { echo '{\"block\": true, \"message\": \"Direct edits on main branch are blocked. Create a feature branch first.\"}' >&2; exit 2; }",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v swiftlint &>/dev/null; then swiftlint lint --quiet 2>/dev/null || true; fi",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  },
+  "env": {
+    "XCODE_WORKSPACE": "FireLoyaltyKit.xcworkspace",
+    "XCODE_SCHEME": "FireLoyaltyKit"
+  }
+}

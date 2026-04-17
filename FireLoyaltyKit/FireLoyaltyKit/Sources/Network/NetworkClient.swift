@@ -157,31 +157,27 @@ public final class NetworkClient {
     ) {
         
         let date = AppUtills().getStringDate()
-        let vc = AppUtills().createVC(date: "\(URLContstants.AUTH_TOKEN_PASS)\(date)") ?? ""
-        
+        let vc = AppUtills().createVC(date: "\(config.authTokenPass)\(date)") ?? ""
+
         let custid = KeychainHelper.shared.read(KeychainKeys.custid) ?? ""
-        
+
         var param: [String:Any] = params
         param["date"] = date
         param["vc"] = vc
-        //param["mercid"] = "44"
         param["sectoken"] = KeychainHelper.shared.read(KeychainKeys.accessToken) ?? ""
-        param["custid"] = KeychainHelper.shared.read(KeychainKeys.custid) ?? ""
+        param["custid"] = custid
         param["lang"] = KeychainHelper.shared.read(KeychainKeys.lang) ?? "en"
         param["os"] = "iOS"
         param["deviceid"] = KeychainHelper.shared.read(KeychainKeys.deviceId) ?? ""
         param["devicetype"] = KeychainHelper.shared.read(KeychainKeys.deviceType) ?? ""
         param["devicemodel"] = KeychainHelper.shared.read(KeychainKeys.deviceModel) ?? ""
-        
         param["app_version"] = KeychainHelper.shared.read(KeychainKeys.appversion) ?? ""
         param["build_number"] = KeychainHelper.shared.read(KeychainKeys.buildNumber) ?? ""
-        
         param["mall"] = KeychainHelper.shared.read(KeychainKeys.mallId) ?? ""
-        
-        param["svc"] = URLContstants.secretKeyPass
-        
-        if custid.count > 0 {
-            param["pvc"] = AppUtills().createVC(date: (custid + URLContstants.pvcSeKey))
+        param["svc"] = config.secretKeyPass
+
+        if !custid.isEmpty {
+            param["pvc"] = AppUtills().createVC(date: (custid + config.pvcSeKey))
         }
         
         send(buildRequest: {

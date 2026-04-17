@@ -53,6 +53,10 @@ import FireLoyaltyKit
 
 FireworksLoyaltyKit.configure(with: FireLoyaltyConfiguration(
     baseURL: URL(string: "https://your-api-base-url.com/")!,
+    authTokenPass: "YOUR_AUTH_TOKEN_PASS",
+    secretKeyPass: "YOUR_SECRET_KEY_PASS",
+    pvcSeKey: "YOUR_PVC_SE_KEY",
+    deleteAccountPass: "YOUR_DELETE_ACCOUNT_PASS",
     deviceId: UIDevice.current.identifierForVendor?.uuidString ?? "",
     deviceModel: UIDevice.current.model,
     deviceType: "iPhone",
@@ -62,6 +66,8 @@ FireworksLoyaltyKit.configure(with: FireLoyaltyConfiguration(
     enableDebug: true
 ))
 ```
+
+> **Note:** Never hardcode secret values directly in your source code. Store them securely using a `.xcconfig` file, environment variables, or a remote config service.
 
 ---
 

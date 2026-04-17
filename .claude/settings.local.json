@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(swift package *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git tag *)",
+      "Bash(gh auth *)",
+      "Bash(ssh -T git@github.com)",
+      "Bash(git remote *)",
+      "Bash(ssh *)",
+      "Bash(ssh-keygen -l -f ~/.ssh/Manifireworks-GitHub.pub)",
+      "Bash(ssh-keygen -l -f ~/.ssh/id_ed25519_new.pub)"
+    ]
+  }
+}

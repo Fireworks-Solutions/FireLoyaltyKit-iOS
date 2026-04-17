@@ -14,10 +14,6 @@ struct URLContstants {
     
     
     //MARK: AUTH
-    static let AUTH_TOKEN_PASS = "fireworks!12*SP#Se"          // For Authentication
-    static let secretKeyPass = "ami3jf8anasnd1f"
-    static let pvcSeKey = "dknne3je8k"
-    
     static let REFRESH_TOKEN_API = "api2/refreshToken.php?"        // REFRESH TOKEN
      
     //MARK: REGISTER
@@ -159,7 +155,6 @@ struct URLContstants {
     
     //MARK: DELETE ACCOUNT
     static let Delete_account_api = "api/deleteCust.php?"
-    static let deleteAccountPass = "kjf93j9asr10"
 
     static let SCANNED_DETAIL_URL = "ecom/useCoupon.php?"
     static let uploadDirectReceiptAPI = "api2/uploadReceiptDirect.php?"

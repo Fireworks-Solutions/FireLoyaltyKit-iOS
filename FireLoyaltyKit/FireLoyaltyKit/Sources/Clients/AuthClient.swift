@@ -26,7 +26,8 @@ public final class AuthClient {
         params["password"] = password
         params["type"] = ""
         
-        let mm = AppUtills().createVC(date: (username + URLContstants.pvcSeKey))
+        let pvcSeKey = FireworksLoyaltyKit.configuration?.pvcSeKey ?? ""
+        let mm = AppUtills().createVC(date: (username + pvcSeKey))
         params["pvc"] = mm
         
         
