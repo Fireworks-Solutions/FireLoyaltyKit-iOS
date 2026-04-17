@@ -1,6 +1,6 @@
 # FireLoyaltyKit
 
-iOS framework for the **T360 by Tropicana** loyalty & rewards platform, built by **Fireworks Digital**.
+iOS framework for the **Fireworks Loyalty** platform, built by **Fireworks Digital**.
 
 ---
 
