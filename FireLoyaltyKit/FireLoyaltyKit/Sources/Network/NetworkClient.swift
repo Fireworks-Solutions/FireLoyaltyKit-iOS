@@ -146,8 +146,32 @@ public final class NetworkClient {
         responseType: T.Type,
         completion: @escaping (Result<T, APIError>) -> Void
     ) {
+        let date = AppUtills().getStringDate()
+        let vc = AppUtills().createVC(date: "\(config.authTokenPass)\(date)") ?? ""
+        let custid = KeychainHelper.shared.read(KeychainKeys.custid) ?? ""
+        
+        var param: [String:Any] = params ?? [:]
+        param["date"] = date
+        param["vc"] = vc
+        param["sectoken"] = KeychainHelper.shared.read(KeychainKeys.accessToken) ?? ""
+        if let params, let custid = params["custid"] as? String, !custid.isEmpty {
+            param["custid"] = custid
+        } else {
+            param["custid"] = KeychainHelper.shared.read(KeychainKeys.custid) ?? ""
+        }
+        param["lang"] = "en"
+        param["os"] = "iOS"
+        param["deviceid"] = KeychainHelper.shared.read(KeychainKeys.deviceId) ?? ""
+        param["devicetype"] = KeychainHelper.shared.read(KeychainKeys.deviceModel) ?? ""
+        param["mall"] = KeychainHelper.shared.read(KeychainKeys.mallId) ?? "12"
+        param["svc"] = config.secretKeyPass
+        
+        if custid.count > 0 {
+            param["pvc"] = AppUtills().createVC(date: (custid + config.pvcSeKey))
+        }
+        
         send(buildRequest: {
-            guard let url = URL(string: path + self.toQueryString(params: params), relativeTo: self.config.baseURL) else { return nil }
+            guard let url = URL(string: path + self.toQueryString(params: param), relativeTo: self.config.baseURL) else { return nil }
             var req = URLRequest(url: url)
             req.httpMethod = "GET"
             //            if let token = KeychainHelper.shared.read(KeychainKeys.accessToken) {
