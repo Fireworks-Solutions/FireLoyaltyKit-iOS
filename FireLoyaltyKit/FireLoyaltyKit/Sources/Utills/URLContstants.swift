@@ -73,6 +73,7 @@ struct URLContstants {
     static let profileImageAPI = "api2/getProfileImage.php"
     static let updateProfilePicAPI = "api2/uploadProfilePic.php?"
     static let getSaluationAPI = "api2/get_salutation.php?"
+    static let getMerchantBranchList = "api/getMerchantBranchList.php"
     
     //MARK: NOTIFICATIONS
     static let deviceTokenAPI = "api2/addDeviceToken.php?"

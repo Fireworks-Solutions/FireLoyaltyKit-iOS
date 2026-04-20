@@ -213,3 +213,10 @@ public struct MerchantBranchModel: Codable {
     public let code: String?
     public let name: String?
 }
+
+// MARK: Merchant Branch Response
+public struct MerchantBranchResponse: Codable {
+    public let status: String?
+    public let userid: String?
+    public let branch: [MerchantBranchModel]?
+}

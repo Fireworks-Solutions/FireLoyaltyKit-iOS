@@ -60,4 +60,22 @@ public final class ProfileClient {
             }
         }
     }
+    
+    /// Fetch the branch list.
+    /// - onSuccess: returns the decoded `MerchantBranchResponse`
+    /// - onError: returns the underlying `APIError`
+    public func getBranchList(
+        param : [String:Any] = [:],
+        onSuccess: @escaping (MerchantBranchResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        network.post(URLContstants.getMerchantBranchList, params: param, responseType: MerchantBranchResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
 }
