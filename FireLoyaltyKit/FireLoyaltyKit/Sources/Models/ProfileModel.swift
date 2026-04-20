@@ -15,7 +15,7 @@ public struct ProfileModel: Codable {
 }
 
 // MARK: –– ProfileResult
-public struct ProfileResult: Codable, Identifiable {
+public struct ProfileResult: Codable, Identifiable, Hashable {
     /// Use `custid` as the unique identifier
     public let id: String
 
@@ -193,7 +193,7 @@ public struct GetSettingModel: Codable {
  */
 
 // MARK: –– PointsExpiryModel
-public struct PointsExpiryModel: Codable, Identifiable {
+public struct PointsExpiryModel: Codable, Identifiable, Hashable {
     public let id = UUID()  // Unique identifier for Identifiable conformance
     public let expiryPoints: Int?
     public let expiryText: String?
@@ -219,4 +219,31 @@ public struct MerchantBranchResponse: Codable {
     public let status: String?
     public let userid: String?
     public let branch: [MerchantBranchModel]?
+}
+
+public struct ProfileInfoModel: Hashable {
+    public var oldEmail: String?
+    public var newEmail: String?
+    public var oldPhone: String?
+    public var newPhone: String?
+    public var oldPhoneCountry: String?
+    public var newPhoneCountry: String?
+    
+    init(oldEmail: String? = nil, newEmail: String? = nil, oldPhone: String? = nil, newPhone: String? = nil, oldPhoneCountry: String? = nil, newPhoneCountry: String? = nil) {
+        self.oldEmail = oldEmail
+        self.newEmail = newEmail
+        self.oldPhone = oldPhone
+        self.newPhone = newPhone
+        self.oldPhoneCountry = oldPhoneCountry
+        self.newPhoneCountry = newPhoneCountry
+    }
+    
+    init(oldEmail: String, newEmail: String, oldPhone: String, newPhone: String, oldPhoneCountry: String, newPhoneCountry: String) {
+        self.oldEmail = oldEmail
+        self.newEmail = newEmail
+        self.oldPhone = oldPhone
+        self.newPhone = newPhone
+        self.oldPhoneCountry = oldPhoneCountry
+        self.newPhoneCountry = newPhoneCountry
+    }
 }
