@@ -347,4 +347,20 @@ public final class RewardsClient {
             }
         }
     }
+    
+    public func getMerchantBranchList(
+        param : [String:Any] = [:],
+        onSuccess: @escaping (MerchantBranchListResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.getMerchantBranchList, params: param, responseType: MerchantBranchListResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
 }
