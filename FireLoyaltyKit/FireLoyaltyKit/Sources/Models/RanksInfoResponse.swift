@@ -33,3 +33,23 @@ public struct Rank: Codable, Identifiable {
     public var identity: Int? { id }
     
 }
+
+public struct Tier: Codable {
+    public let id: String?
+    public let name: String?
+    public let title: String?
+    public let sections: [TierSection]?
+    public let card_image: String?
+    public let eligibility_info: EligibilityInfo?
+}
+
+public struct EligibilityInfo: Codable {
+    public let title: String?
+    public let description: String?
+}
+
+public struct TierSection: Codable {
+    public let title: String?
+    public let icon: String?
+    public let description: String?
+}
