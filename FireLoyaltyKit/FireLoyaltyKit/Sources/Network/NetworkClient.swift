@@ -126,14 +126,28 @@ public final class NetworkClient {
         }.resume()
     }
     
+    private func toQueryString(params: [String: Any]? = nil) -> String {
+        if let params {
+            var components = URLComponents()
+            
+            components.queryItems = params.map { key, value in
+                URLQueryItem(name: key, value: "\(value)")
+            }
+            
+            return components.percentEncodedQuery ?? ""
+        }
+        return ""
+    }
+    
     // MARK: - Public GET
     public func get<T: Decodable>(
         _ path: String,
+        params: [String:Any]? = nil,
         responseType: T.Type,
         completion: @escaping (Result<T, APIError>) -> Void
     ) {
         send(buildRequest: {
-            guard let url = URL(string: path, relativeTo: self.config.baseURL) else { return nil }
+            guard let url = URL(string: path + self.toQueryString(params: params), relativeTo: self.config.baseURL) else { return nil }
             var req = URLRequest(url: url)
             req.httpMethod = "GET"
             //            if let token = KeychainHelper.shared.read(KeychainKeys.accessToken) {
