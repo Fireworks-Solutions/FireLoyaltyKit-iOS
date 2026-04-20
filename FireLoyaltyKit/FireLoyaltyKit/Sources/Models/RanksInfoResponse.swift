@@ -14,6 +14,7 @@ public struct RanksInfoResponse: Codable {
     public let message: String?
     public let general: GeneralInfo?
     public let ranks: [Rank]?
+    public let tiers: [Tier]?
 }
 
 public struct GeneralInfo: Codable {
