@@ -80,6 +80,20 @@ public struct RewardDetail: Codable, Identifiable {
         // Conform to Identifiable
         public var identity: String? { id }
         public var uuid: UUID { UUID() }
+    
+    public var validInfo: String {
+        guard let message = validity_message, let firstPart = message.split(separator: ":").first else {
+            return ""
+        }
+        return String(firstPart)
+    }
+    
+    public var validDate: String {
+        guard let message = validity_message, let lastPart = message.split(separator: ":").last else {
+            return ""
+        }
+        return String(lastPart)
+    }
 }
 
 /// Collection method option
