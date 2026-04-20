@@ -74,18 +74,6 @@ public struct MyRewardDetail: Codable, Identifiable {
     public let remarks: String?
     public let rebate_amount: String?
     public let is_rebate: String?
-    public var validInfo: String {
-        guard let message = validity_message, let firstPart = message.split(separator: ":").first else {
-            return ""
-        }
-        return String(firstPart)
-    }
-    public var validDate: String {
-        guard let message = validity_message, let lastPart = message.split(separator: ":").last else {
-            return ""
-        }
-        return String(lastPart)
-    }
     public let transferable: Bool?
     public let transferred_info: TransferredInfo?
 }

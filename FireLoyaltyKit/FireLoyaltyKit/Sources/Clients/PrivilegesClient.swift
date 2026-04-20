@@ -40,7 +40,7 @@ public final class PrivilegesClient {
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.PRIVILEGES_RANKS_INFO, params: param, responseType: RanksInfoResponse.self) { result in
+        network.get(URLContstants.PRIVILEGES_RANKS_INFO, params: param, responseType: RanksInfoResponse.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)
