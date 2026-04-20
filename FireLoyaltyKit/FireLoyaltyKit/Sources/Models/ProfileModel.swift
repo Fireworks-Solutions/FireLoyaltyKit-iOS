@@ -82,6 +82,12 @@ public struct ProfileResult: Codable, Identifiable {
     public let countdownTimer: Int?
     public let payPointsEnabled: Bool?
     public let pointsExpiry: [PointsExpiryModel]?
+    public let phoneVerified: Bool?
+    public let phoneVerifiedErrorMessage: String?
+    public let preferredOutletId: String?
+    public let preferredOutletName: String?
+    public let isVerified: String?
+    public let isPrincipal: Bool?
 
     private enum CodingKeys: String, CodingKey {
         case customerStatus    = "customer_status"
@@ -130,6 +136,12 @@ public struct ProfileResult: Codable, Identifiable {
         case countdownTimer    = "countdown_timer"
         case payPointsEnabled  = "paypointsenabled"
         case pointsExpiry  = "points_expiry"
+        case isPrincipal       = "is_principal"
+        case isVerified        = "is_verified"
+        case phoneVerified     = "phone_verified"
+        case phoneVerifiedErrorMessage = "phone_verified_error_message"
+        case preferredOutletId = "preferred_outlet_id"
+        case preferredOutletName = "preferred_outlet_name"
     }
 }
 
