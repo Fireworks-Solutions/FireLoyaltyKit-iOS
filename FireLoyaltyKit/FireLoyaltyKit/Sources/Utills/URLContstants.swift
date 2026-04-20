@@ -196,4 +196,8 @@ struct URLContstants {
     // MARK: Eye Prescription
     static let getPrescriptionsList = "api/getPrescriptionList.php?"
     static let getPrescriptionDetail = "api/getPrescriptionDetails.php?"
+    
+    // MARK: STORE LOCATOR
+    static let getStoreLocatorFilters = "api/store_locator_filter.php"
+    static let getStoreLocatorResults = "api/store_locator_result.php?"
 }
