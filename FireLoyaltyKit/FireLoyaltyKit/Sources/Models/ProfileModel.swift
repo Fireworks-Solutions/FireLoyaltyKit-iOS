@@ -208,3 +208,8 @@ public struct PointsExpiryModel: Codable, Identifiable {
     }
 }
 
+public struct MerchantBranchModel: Codable {
+    public let id: String?
+    public let code: String?
+    public let name: String?
+}
