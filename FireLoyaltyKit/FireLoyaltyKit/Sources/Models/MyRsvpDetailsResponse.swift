@@ -52,4 +52,12 @@ public struct RsvpDetail: Codable, Identifiable {
     public let validity_message: String?
     public let wallet_id: String?
     public let time: String?
+    public let transferable: Bool?
+    public let transferred_info: TransferredInfo?
+    public let validity_info: ValidityInfo?
+}
+
+public struct TransferredInfo: Codable {
+    public let name: String?
+    public let phonenumber: String?
 }
