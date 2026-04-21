@@ -40,6 +40,22 @@ public final class PrivilegesClient {
         onError:   @escaping (APIError) -> Void
     ) {
         
+        network.post(URLContstants.PRIVILEGES_RANKS_INFO, params: param, responseType: RanksInfoResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    public func getPrivilegesRanks(
+        param : [String:Any] = [:],
+        onSuccess: @escaping (RanksInfoResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
         network.get(URLContstants.PRIVILEGES_RANKS_INFO, params: param, responseType: RanksInfoResponse.self) { result in
             switch result {
             case .success(let model):

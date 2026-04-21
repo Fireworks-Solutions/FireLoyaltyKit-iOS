@@ -11,7 +11,7 @@ import Foundation
 // MARK: - DashboardResponse
 public struct DashboardResponse: Codable {
     public let gotProfile: String?
-    public let profile: ProfileResult?
+//    public let profile: ProfileResult?
     public let status: String?
     public let message: String?
     public let custname: String?
@@ -32,7 +32,7 @@ public struct DashboardResponse: Codable {
 
     private enum CodingKeys: String, CodingKey {
         case gotProfile   = "got_profile"
-        case profile, status, custname , message ,magazines
+        case status, custname , message ,magazines
         case payPointsEnabled = "paypointsenabled"
         case custType     = "cust_type"
         case points, tenants, news
