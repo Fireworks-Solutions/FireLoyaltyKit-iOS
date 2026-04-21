@@ -131,7 +131,7 @@ public struct DashboardReward: Codable ,Identifiable{
     public let point: String?
     public let img: String?
     public let date: String?
-    public let mall: Int?
+    public let mall: JSONAny?
     public let cashPayment: Bool?
     public let cash: String?
     public let points_raw: Int?
@@ -189,7 +189,7 @@ public class JSONCodingKey: CodingKey {
     required public init?(stringValue: String) { self.stringValue = stringValue }
 }
 
-public class JSONNull: Decodable, Hashable {
+public class JSONNull: Codable, Hashable {
     public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool { true }
     public func hash(into hasher: inout Hasher) { }
     public init() {}
@@ -201,9 +201,14 @@ public class JSONNull: Decodable, Hashable {
                                       debugDescription: "Wrong type for JSONNull"))
         }
     }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encodeNil()
+    }
 }
 
-public class JSONAny: Decodable {
+public class JSONAny: Codable {
     public let value: Any
 
     public required init(from decoder: Decoder) throws {
@@ -251,4 +256,73 @@ public class JSONAny: Decodable {
             DecodingError.Context(codingPath: decoder.codingPath,
                                   debugDescription: "Cannot decode JSONAny"))
     }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch value {
+        case let v as Bool:
+            try container.encode(v)
+        case let v as Int:
+            try container.encode(v)
+        case let v as Double:
+            try container.encode(v)
+        case let v as String:
+            try container.encode(v)
+        case is JSONNull:
+            try container.encodeNil()
+        case let v as [Any]:
+            var unkeyedContainer = encoder.unkeyedContainer()
+            for item in v {
+                let wrapped = JSONAnyWrapper(item)
+                try unkeyedContainer.encode(wrapped)
+            }
+        case let v as [String: Any]:
+            var keyedContainer = encoder.container(keyedBy: JSONCodingKey.self)
+            for (key, val) in v {
+                guard let codingKey = JSONCodingKey(stringValue: key) else { continue }
+                let wrapped = JSONAnyWrapper(val)
+                try keyedContainer.encode(wrapped, forKey: codingKey)
+            }
+        default:
+            try container.encodeNil()
+        }
+    }
 }
+/// Private helper to encode `Any` values wrapped inside arrays/dictionaries.
+private struct JSONAnyWrapper: Encodable {
+    private let value: Any
+
+    init(_ value: Any) {
+        self.value = value
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch value {
+        case let v as Bool:
+            try container.encode(v)
+        case let v as Int:
+            try container.encode(v)
+        case let v as Double:
+            try container.encode(v)
+        case let v as String:
+            try container.encode(v)
+        case is JSONNull:
+            try container.encodeNil()
+        case let v as [Any]:
+            var unkeyedContainer = encoder.unkeyedContainer()
+            for item in v {
+                try unkeyedContainer.encode(JSONAnyWrapper(item))
+            }
+        case let v as [String: Any]:
+            var keyedContainer = encoder.container(keyedBy: JSONCodingKey.self)
+            for (key, val) in v {
+                guard let codingKey = JSONCodingKey(stringValue: key) else { continue }
+                try keyedContainer.encode(JSONAnyWrapper(val), forKey: codingKey)
+            }
+        default:
+            try container.encodeNil()
+        }
+    }
+}
+
