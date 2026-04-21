@@ -9,8 +9,49 @@
 import Foundation
 
 /// Your common API errors
-public enum APIError: Error {
+public enum APIError: Error, LocalizedError {
     case invalidURL, networkError(Error), invalidResponse, decodingError(Error)
+
+    public var errorDescription: String? {
+        switch self {
+        case .invalidURL:
+            return "Invalid URL"
+        case .networkError(let error):
+            return "Network error: \(error.localizedDescription)"
+        case .invalidResponse:
+            return "Invalid response"
+        case .decodingError(let error):
+            return "Decoding error: \(Self.decodingErrorDescription(error))"
+        }
+    }
+
+    private static func decodingErrorDescription(_ error: Error) -> String {
+        guard let decodingError = error as? DecodingError else {
+            return error.localizedDescription
+        }
+        switch decodingError {
+        case .keyNotFound(let key, let context):
+            let path = Self.codingPath(context.codingPath)
+            return "Missing key '\(key.stringValue)' at path: \(path). \(context.debugDescription)"
+        case .typeMismatch(let type, let context):
+            let path = Self.codingPath(context.codingPath)
+            return "Type mismatch for type '\(type)' at path: \(path). \(context.debugDescription)"
+        case .valueNotFound(let type, let context):
+            let path = Self.codingPath(context.codingPath)
+            return "Value not found for type '\(type)' at path: \(path). \(context.debugDescription)"
+        case .dataCorrupted(let context):
+            let path = Self.codingPath(context.codingPath)
+            return "Data corrupted at path: \(path). \(context.debugDescription)"
+        @unknown default:
+            return error.localizedDescription
+        }
+    }
+
+    private static func codingPath(_ path: [CodingKey]) -> String {
+        path.isEmpty
+            ? "(root)"
+            : path.map { $0.intValue.map(String.init) ?? $0.stringValue }.joined(separator: " → ")
+    }
 }
 
 /// Internal request queue & refresh logic
@@ -126,14 +167,52 @@ public final class NetworkClient {
         }.resume()
     }
         
+    private func toQueryString(params: [String: Any]? = nil) -> String {
+           if let params {
+               var components = URLComponents()
+               
+               components.queryItems = params.map { key, value in
+                   URLQueryItem(name: key, value: "\(value)")
+               }
+               
+               return components.percentEncodedQuery ?? ""
+           }
+           return ""
+    }
+    
     // MARK: - Public GET
     public func get<T: Decodable>(
         _ path: String,
+        params: [String:Any]? = nil,
         responseType: T.Type,
         completion: @escaping (Result<T, APIError>) -> Void
     ) {
+        let date = AppUtills().getStringDate()
+        let vc = AppUtills().createVC(date: "\(config.authTokenPass)\(date)") ?? ""
+
+        let custid = KeychainHelper.shared.read(KeychainKeys.custid) ?? ""
+
+        var param: [String:Any] = params ?? [:]
+        param["date"] = date
+        param["vc"] = vc
+        param["sectoken"] = KeychainHelper.shared.read(KeychainKeys.accessToken) ?? ""
+        param["custid"] = custid
+        param["lang"] = KeychainHelper.shared.read(KeychainKeys.lang) ?? "en"
+        param["os"] = "iOS"
+        param["deviceid"] = KeychainHelper.shared.read(KeychainKeys.deviceId) ?? ""
+        param["devicetype"] = KeychainHelper.shared.read(KeychainKeys.deviceType) ?? ""
+        param["devicemodel"] = KeychainHelper.shared.read(KeychainKeys.deviceModel) ?? ""
+        param["app_version"] = KeychainHelper.shared.read(KeychainKeys.appversion) ?? ""
+        param["build_number"] = KeychainHelper.shared.read(KeychainKeys.buildNumber) ?? ""
+        param["mall"] = KeychainHelper.shared.read(KeychainKeys.mallId) ?? ""
+        param["svc"] = config.secretKeyPass
+
+        if !custid.isEmpty {
+            param["pvc"] = AppUtills().createVC(date: (custid + config.pvcSeKey))
+        }
+        
         send(buildRequest: {
-            guard let url = URL(string: path, relativeTo: self.config.baseURL) else { return nil }
+            guard let url = URL(string: (path + self.toQueryString(params: param)) , relativeTo: self.config.baseURL) else { return nil }
             var req = URLRequest(url: url)
             req.httpMethod = "GET"
             //            if let token = KeychainHelper.shared.read(KeychainKeys.accessToken) {
