@@ -424,8 +424,10 @@ public final class AuthClient {
                 
                 KeychainHelper.shared.save(resp.custid ?? "", forKey: KeychainKeys.custid)
                 
+                onSuccess(resp)
+                
             case .failure(let err):
-                DispatchQueue.main.async { onError(err) }
+                onError(err)
             }
         }
     }
