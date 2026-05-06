@@ -76,6 +76,7 @@ public struct MyRewardDetail: Codable, Identifiable {
     public let is_rebate: String?
     public let transferable: Bool?
     public let transferred_info: TransferredInfo?
+    public let remarks : String?
 }
 
 /*

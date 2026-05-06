@@ -80,6 +80,8 @@ public struct RewardDetail: Codable, Identifiable {
         // Conform to Identifiable
         public var identity: String? { id }
         public var uuid: UUID { UUID() }
+    
+       public let remarks : String?
 }
 
 /// Collection method option
