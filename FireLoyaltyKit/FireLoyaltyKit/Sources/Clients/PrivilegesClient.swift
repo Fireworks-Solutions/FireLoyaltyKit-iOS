@@ -18,11 +18,11 @@ public final class PrivilegesClient {
     /// - onError: returns the underlying `APIError`
     public func getPrivilegesDashboard(
         param : [String:Any] = [:],
-        onSuccess: @escaping (DashboardResponse) -> Void,
+        onSuccess: @escaping (PrivilegesDashboardResponse) -> Void,
         onError:   @escaping (APIError) -> Void
     ) {
         
-        network.post(URLContstants.PRIVILEGES_DASHBOARD, params: param, responseType: DashboardResponse.self) { result in
+        network.post(URLContstants.PRIVILEGES_DASHBOARD, params: param, responseType: PrivilegesDashboardResponse.self) { result in
             switch result {
             case .success(let model):
                 onSuccess(model)
