@@ -26,5 +26,6 @@ public struct MembersAlert: Codable ,Identifiable{
     public let  url: String?
     public let  to_be_executed: Bool?
     public let  title: String?
+    public let  button_title : String?
     
 }
