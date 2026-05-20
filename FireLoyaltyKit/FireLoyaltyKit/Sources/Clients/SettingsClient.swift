@@ -232,6 +232,23 @@ public final class SettingsClient {
         }
     }
     
+    //MARK: uploadeDirectReceiptAPI
+    public func uploadeManualReceiptAPI(
+        param : [String:Any],
+        onSuccess: @escaping (OcrResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.uploadReceiptAPI, params: param, responseType: OcrResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
     public func readAllNotifications(
         parameters: [String: Any],
         onSuccess: @escaping (GeneralResponseModel) -> Void,

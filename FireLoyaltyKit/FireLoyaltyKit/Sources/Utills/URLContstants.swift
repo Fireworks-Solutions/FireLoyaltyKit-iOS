@@ -157,8 +157,11 @@ struct URLContstants {
     //MARK: DELETE ACCOUNT
     static let Delete_account_api = "api/deleteCust.php?"
 
+    //MARK: COUPON SCANNING
     static let SCANNED_DETAIL_URL = "ecom/useCoupon.php?"
     static let uploadDirectReceiptAPI = "api2/uploadReceiptDirect.php?"
+    static let uploadReceiptAPI = "api2/uploadReceipt.php?"
+    
     
     //MARK: Daily check
     static let dailyCheckListAPI = "api2/get_daily_check_in_rewards.php?"
