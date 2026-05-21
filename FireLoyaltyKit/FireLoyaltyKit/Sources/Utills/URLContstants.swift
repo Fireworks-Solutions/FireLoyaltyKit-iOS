@@ -161,6 +161,7 @@ struct URLContstants {
     static let SCANNED_DETAIL_URL = "ecom/useCoupon.php?"
     static let uploadDirectReceiptAPI = "api2/uploadReceiptDirect.php?"
     static let uploadReceiptAPI = "api2/uploadReceipt.php?"
+    static let AddScanReceiptAPI = "api2/addReceipt.php?"
     
     
     //MARK: Daily check
