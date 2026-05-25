@@ -98,6 +98,7 @@ struct URLContstants {
     static let rewardCategoriesV2 = "api2/categoriesV2.php?";
     static let rewardTimerAPI = "api2/timer_reward.php?";
     static let transferVoucher = "api/transferVoucher.php?";
+    static let redeemMerchantCouponVoucher = "api2/redeem_using_voucher_code.php?";
     
     //MARK: Gift redemption
     static let get_shipping_points = "api2/get_shipping_points.php?"

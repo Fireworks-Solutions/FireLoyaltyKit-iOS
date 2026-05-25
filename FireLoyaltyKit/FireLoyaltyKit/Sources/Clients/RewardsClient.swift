@@ -363,4 +363,20 @@ public final class RewardsClient {
             }
         }
     }
+    
+    public func useMerchantCouponAPI(
+        param : [String:Any] = [:],
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.redeemMerchantCouponVoucher, params: param, responseType: GeneralResponseModel.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
 }
