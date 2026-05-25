@@ -140,6 +140,13 @@ struct URLContstants {
     static let getMerchantCategories = "api2/merchant_categories.php?"
     static let getCategoryAPI = "api2/categories.php?"
     static let getBranchesAPI = "api2/webview_getBranches.php?";
+    static let getDirectoryFloorsList = "api2/getDirectoryFloor.php?"
+    
+    //MARK: FACILITIES
+    static let facility_categories_Api = "api2/facility_categories.php?"
+    static let facility_get_Floor_Api = "api2/getFacilityFloor.php?"
+    static let facility_Details_Api = "api2/webview_aboutFacility.php?"
+    static let getFacilitiesList_Api = "api2/getFacilities.php?"
     
     //MARK: TRANSACATIONS
     static let check_Referral_code_API = "api/check_valid_referral.php?"

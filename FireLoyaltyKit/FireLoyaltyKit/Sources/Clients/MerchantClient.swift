@@ -63,4 +63,85 @@ public final class MerchantClient {
             }
         }
     }
+    
+    public func getDirectoryFloorsList(
+        parameters: [String: Any] = [:],
+        onSuccess: @escaping (FloorsListResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.getDirectoryFloorsList, params: parameters, responseType: FloorsListResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    //MARK: FACILITIES
+    public func getFacilityCategories(
+        parameters: [String: Any] = [:],
+        onSuccess: @escaping (CategoryResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.facility_categories_Api, params: parameters, responseType: CategoryResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    public func getFacilityFloorsList(
+        parameters: [String: Any] = [:],
+        onSuccess: @escaping (FloorsListResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.facility_get_Floor_Api, params: parameters, responseType: FloorsListResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    public func getFacilitiesList(
+        parameters: [String: Any],
+        onSuccess: @escaping (FacilityListResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.getFacilitiesList_Api, params: parameters, responseType: FacilityListResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    public func getFacilityDetails(
+        parameters: [String: Any],
+        onSuccess: @escaping (FacilityDetailsResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.facility_Details_Api, params: parameters, responseType: FacilityDetailsResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
 }
