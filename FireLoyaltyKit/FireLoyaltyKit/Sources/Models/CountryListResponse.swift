@@ -11,6 +11,7 @@ public struct CountryListResponse: Codable {
     public let status: String?
     public let message: String?
     public let results: [StatesListModel]?
+    public let result: [StatesListModel]?
 }
 
 public struct CountryListModel: Codable, Identifiable {
