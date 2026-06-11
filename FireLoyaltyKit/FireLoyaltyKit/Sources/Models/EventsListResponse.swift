@@ -17,6 +17,8 @@ public struct EventsListResponse: Codable {
     public let points: Int?
     public let status: String?
     public let messsage: String?
+    public let title_1: String?
+    public let title_2: String?
     
     public let starts: Int?
     public let end: Int?
