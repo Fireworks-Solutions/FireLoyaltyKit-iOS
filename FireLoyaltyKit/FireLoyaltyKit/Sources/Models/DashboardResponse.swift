@@ -28,7 +28,8 @@ public struct DashboardResponse: Codable {
     public let hotDeals: [DashboardReward]?
     public let events: [Event]?
     public let showDailyCheckIn: Bool?
-    
+    public let tjourney : Bool?
+    public let tjourney_link : String?
 
     private enum CodingKeys: String, CodingKey {
         case gotProfile   = "got_profile"
@@ -42,6 +43,8 @@ public struct DashboardResponse: Codable {
         case hotDeals     = "hot_deals"
         case events
         case showDailyCheckIn  = "showDailyCheckIn"
+        case tjourney
+        case tjourney_link
     }
 }
 
