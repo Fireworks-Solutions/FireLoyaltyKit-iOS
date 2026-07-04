@@ -246,4 +246,38 @@ public final class SettingsClient {
             }
         }
     }
+    
+    //MARK: getAppThemeSettings
+    public func getAppThemeSettings(
+        parameters: [String: Any] = [:],
+        onSuccess: @escaping (AppConfigResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.getAppSettingsAPI, params: parameters, responseType: AppConfigResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
+    //MARK: getContentDisplayInfo
+    public func getContentDisplayInfo(
+        parameters: [String: Any] = [:],
+        onSuccess: @escaping (ContentDisplayResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.getContentDisplayAPI, params: parameters, responseType: ContentDisplayResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
 }

@@ -182,6 +182,10 @@ struct URLContstants {
 
     static let applytTourist_API = "api2/makeCustomerTourist.php?"
 
+    //MARK: App Settings
+    static let getAppSettingsAPI = "api/app_settings.php?"
+    static let getContentDisplayAPI = "api/content_display.php?"
+    
     //MARK: Country and States APIS
     static let getCountryListAPI = "api/countryList.php?"
     static let getCountryCodesListAPI = "api/getCountryCodes.php?"
