@@ -35,6 +35,7 @@ public struct EventListModel: Codable, Identifiable {
     public let expiry_date: String?
     public let id: Int?
     public let img: String?
+    public let thumbnail_img: String?
     public let is_rsvp: Bool?
     public let label: String?
     public let link: String?

@@ -34,6 +34,7 @@ public struct MerchantListModel: Codable, Identifiable {
     public let title: String?
     public let siteurl: String?
     public let featured_img: String?
+    public let thumbnail_img: String?
     public let featured_icon: String?
     public let logo: String?
     public let categories: String?

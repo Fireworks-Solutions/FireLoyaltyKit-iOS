@@ -20,6 +20,7 @@ public struct PromotionDetailModel: Codable ,Identifiable{
     public let  title: String?
     public let  description: String?
     public let  featured_img: String?
+    public let  thumbnail_img: String?
     public let  category: String?
     public let  link: String?
     public let  start_date: String?

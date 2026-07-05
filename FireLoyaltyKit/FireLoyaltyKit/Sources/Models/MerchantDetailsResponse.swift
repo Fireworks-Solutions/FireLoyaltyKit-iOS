@@ -22,6 +22,7 @@ public struct MerchantDetailsModel: Codable {
     public var title: String?
     public var description: String?
     public var featured_image: String?
+    public var thumbnail_img: String?
     public var address: String?
     public var contact: String?
     public var weburl: String?

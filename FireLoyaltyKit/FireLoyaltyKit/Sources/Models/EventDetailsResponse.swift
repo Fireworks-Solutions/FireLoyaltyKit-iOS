@@ -22,6 +22,7 @@ public struct EventDetail: Codable, Identifiable {
     public let bookmark_status: Int?
     public let description: String?
     public let featured_image: String?
+    public let thumbnail_img: String?
     public let id: String?
     public let is_rsvp: Int?
     public let label: String?

@@ -30,6 +30,7 @@ public struct DashboardResponse: Codable {
     public let showDailyCheckIn: Bool?
     public let tjourney : Bool?
     public let tjourney_link : String?
+    public let order_url : String?
 
     private enum CodingKeys: String, CodingKey {
         case gotProfile   = "got_profile"
@@ -45,6 +46,7 @@ public struct DashboardResponse: Codable {
         case showDailyCheckIn  = "showDailyCheckIn"
         case tjourney
         case tjourney_link
+        case order_url
     }
 }
 
@@ -55,6 +57,7 @@ public struct Tenant: Codable ,Identifiable{
     public let description: String?
     public let location: String?
     public let featuredImg: String?
+    public let thumbnailImg: String?
     public let logo: String?
     public let createdAt: String?
     public let total_reward : Int?
@@ -62,6 +65,7 @@ public struct Tenant: Codable ,Identifiable{
     private enum CodingKeys: String, CodingKey {
         case id, title, description, location ,total_reward ,logo
         case featuredImg = "featured_img"
+        case thumbnailImg = "thumbnail_img"
         case createdAt   = "created_at"
     }
 }
@@ -72,12 +76,14 @@ public struct MemberNews: Codable ,Identifiable{
     public let title: String
     public let description: String?
     public let featuredImg: String?
+    public let thumbnailImg: String?
     public let createdAt: String?
     public let mall: Int?
 
     private enum CodingKeys: String, CodingKey {
         case id, title, description
         case featuredImg = "featured_img"
+        case thumbnailImg = "thumbnail_img"
         case createdAt   = "created_at"
         case mall
     }
@@ -89,6 +95,7 @@ public struct BannerNews: Codable ,Identifiable{
     public let title: String
     public let description: String?
     public let featured_img: String?
+    public let thumbnail_img: String?
     public let created_at: String?
     public let clickable: Bool?
     public let link: String?
@@ -103,12 +110,13 @@ public struct Promotion: Codable ,Identifiable{
     public let title: String
     public let description: String?
     public let featuredImg: String?
+    public let thumbnailImg: String?
     public let createdAt: String?
     public let mall: Int?
     public let startDate: String?
     public let endDate: String?
     public let endDateText: String?
-    
+
     public let content: String?
     public let image: String?
     public let external_link: String?
@@ -117,6 +125,7 @@ public struct Promotion: Codable ,Identifiable{
     private enum CodingKeys: String, CodingKey {
         case id, title, description , content , image , external_link , cat_title
         case featuredImg  = "featured_img"
+        case thumbnailImg = "thumbnail_img"
         case createdAt    = "created_at"
         case mall
         case startDate    = "start_date"
@@ -133,6 +142,7 @@ public struct DashboardReward: Codable ,Identifiable{
     public let description: String?
     public let point: String?
     public let img: String?
+    public let thumbnail_img: String?
     public let date: String?
     public let mall: JSONAny?
     public let cashPayment: Bool?
@@ -145,7 +155,7 @@ public struct DashboardReward: Codable ,Identifiable{
     public let validity_info : ValidityInfo?
 
     private enum CodingKeys: String, CodingKey {
-        case id, name, description, point, img, date, mall,points_raw,validity_days,validity_info
+        case id, name, description, point, img, thumbnail_img, date, mall,points_raw,validity_days,validity_info
         case cashPayment  = "cash_payment"
         case cash
         case mallName     = "mall_name"
@@ -171,13 +181,14 @@ public struct Event: Codable ,Identifiable{
     public let description: String?
     public let point: String?
     public let img: String?
+    public let thumbnail_img: String?
     public let date: String?
     public let openLink: Bool?
     public let link: String?
     public let mall: Int?
 
     private enum CodingKeys: String, CodingKey {
-        case id, name, description, point, img, date, mall
+        case id, name, description, point, img, thumbnail_img, date, mall
         case openLink = "open_link"
 case link
     }
