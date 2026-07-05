@@ -280,4 +280,21 @@ public final class SettingsClient {
             }
         }
     }
+    
+    //MARK: getModuleConfig
+    public func getModuleConfig(
+        parameters: [String: Any] = [:],
+        onSuccess: @escaping (ModuleConfigResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.getModuleConfigAPI, params: parameters, responseType: ModuleConfigResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
 }
