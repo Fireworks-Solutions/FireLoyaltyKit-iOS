@@ -41,7 +41,7 @@ public struct DashboardSection: Codable {
     public let rows: Int?
     public let cols: Int?
     public let maxItems: Int?
-    public let children: [String]?
+    public let children: [DashboardBanner]?
     public let image: String?
     public let redirectUrl: String?
     
@@ -54,7 +54,7 @@ public struct DashboardSection: Codable {
         rows: Int?,
         cols: Int?,
         maxItems: Int?,
-        children: [String]?,
+        children: [DashboardBanner]?,
         image: String?,
         redirectUrl: String?
     ) {
@@ -94,6 +94,7 @@ public struct DashboardBanner: Codable {
     public let order: Int?
     public let enabled: Bool?
     public let image: String?
+    public let icon: String?
     public let redirectUrl: String?
     
     public init(
@@ -103,6 +104,7 @@ public struct DashboardBanner: Codable {
         order: Int?,
         enabled: Bool?,
         image: String?,
+        icon: String?,
         redirectUrl: String?
     ) {
         self.key = key
@@ -111,6 +113,7 @@ public struct DashboardBanner: Codable {
         self.order = order
         self.enabled = enabled
         self.image = image
+        self.icon = icon
         self.redirectUrl = redirectUrl
     }
     
@@ -121,6 +124,7 @@ public struct DashboardBanner: Codable {
         case order
         case enabled
         case image
+        case icon
         case redirectUrl = "redirect_url"
     }
 }
