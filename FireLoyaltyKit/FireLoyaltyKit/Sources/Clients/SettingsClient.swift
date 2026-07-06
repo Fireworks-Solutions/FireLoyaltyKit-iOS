@@ -297,4 +297,21 @@ public final class SettingsClient {
             }
         }
     }
+    
+    //MARK: getDashboardLayoutInfo
+    public func getDashboardLayoutInfo(
+        parameters: [String: Any] = [:],
+        onSuccess: @escaping (DashboardLayoutResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        
+        network.post(URLContstants.getDashboardLayoutAPI, params: parameters, responseType: DashboardLayoutResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
 }

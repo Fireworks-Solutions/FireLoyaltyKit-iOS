@@ -186,6 +186,7 @@ struct URLContstants {
     static let getAppSettingsAPI = "api/app_settings.php?"
     static let getContentDisplayAPI = "api/content_display.php?"
     static let getModuleConfigAPI = "api/module_config.php?"
+    static let getDashboardLayoutAPI = "api/dashboard_layout.php?"
     
     //MARK: Country and States APIS
     static let getCountryListAPI = "api/countryList.php?"
