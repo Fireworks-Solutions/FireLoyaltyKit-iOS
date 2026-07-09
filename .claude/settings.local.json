@@ -12,7 +12,8 @@
       "Bash(ssh *)",
       "Bash(ssh-keygen -l -f ~/.ssh/Manifireworks-GitHub.pub)",
       "Bash(ssh-keygen -l -f ~/.ssh/id_ed25519_new.pub)",
-      "Bash(xargs -I{} sh -c 'grep -l \"http\\\\|endpoint\\\\|baseURL\\\\|Constant\" \"{}\" 2>/dev/null')"
+      "Bash(xargs -I{} sh -c 'grep -l \"http\\\\|endpoint\\\\|baseURL\\\\|Constant\" \"{}\" 2>/dev/null')",
+      "Bash(git log *)"
     ]
   }
 }

@@ -89,6 +89,9 @@ public struct ProfileResult: Codable, Identifiable, Hashable {
     public let isVerified: String?
     public let isPrincipal: Bool?
     public let order_url : String?
+    public let voucherAiUrl: String?
+    public let useAi: Bool?
+    public let aiId: String?
 
     private enum CodingKeys: String, CodingKey {
         case customerStatus    = "customer_status"
@@ -144,6 +147,9 @@ public struct ProfileResult: Codable, Identifiable, Hashable {
         case preferredOutletId = "preferred_outlet_id"
         case preferredOutletName = "preferred_outlet_name"
         case order_url
+        case voucherAiUrl       = "voucher_ai_url"
+        case useAi              = "use_ai"
+        case aiId               = "ai_id"
     }
 }
 

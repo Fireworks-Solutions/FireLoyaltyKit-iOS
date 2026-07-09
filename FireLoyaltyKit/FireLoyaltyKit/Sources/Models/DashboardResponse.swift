@@ -31,6 +31,9 @@ public struct DashboardResponse: Codable {
     public let tjourney : Bool?
     public let tjourney_link : String?
     public let order_url : String?
+    public let voucherAiUrl: String?
+    public let useAi: Bool?
+    public let aiId: String?
 
     private enum CodingKeys: String, CodingKey {
         case gotProfile   = "got_profile"
@@ -47,6 +50,9 @@ public struct DashboardResponse: Codable {
         case tjourney
         case tjourney_link
         case order_url
+        case voucherAiUrl = "voucher_ai_url"
+        case useAi = "use_ai"
+        case aiId = "ai_id"
     }
 }
 
