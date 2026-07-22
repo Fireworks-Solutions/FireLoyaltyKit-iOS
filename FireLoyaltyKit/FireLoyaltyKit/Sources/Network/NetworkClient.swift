@@ -54,6 +54,17 @@ public enum APIError: Error, LocalizedError {
     }
 }
 
+private extension CharacterSet {
+    /// RFC 3986 "unreserved" characters only (letters, digits, "-", "_", ".", "~").
+    /// Safe for `application/x-www-form-urlencoded` bodies: everything else,
+    /// including "+", "/", "=", "&", is percent-encoded so it round-trips correctly.
+    static let formValueAllowed: CharacterSet = {
+        var set = CharacterSet.alphanumerics
+        set.insert(charactersIn: "-._~")
+        return set
+    }()
+}
+
 /// Internal request queue & refresh logic
 public final class NetworkClient {
     private let session: URLSession
@@ -273,10 +284,14 @@ public final class NetworkClient {
             //                }
             
             // 3) percent-encode params
+            // NOTE: .urlQueryAllowed leaves "+", "/", "=" unescaped, but this body is
+            // application/x-www-form-urlencoded, where an unescaped "+" is decoded by
+            // the server as a space. That silently corrupts base64 payloads (e.g. "pic").
+            // Use the RFC 3986 "unreserved" set instead so those characters are escaped.
             let formString = param.map { key, value -> String in
-                let escapedKey   = key.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                let escapedKey   = key.addingPercentEncoding(withAllowedCharacters: .formValueAllowed) ?? ""
                 let escapedValue = "\(value)"
-                    .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                    .addingPercentEncoding(withAllowedCharacters: .formValueAllowed) ?? ""
                 return "\(escapedKey)=\(escapedValue)"
             }.joined(separator: "&")
             
