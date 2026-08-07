@@ -32,6 +32,25 @@ public final class DashboardClient {
         }
     }
     
+    /// Fetch the cached dashboard payload (served from the backend's cache tier).
+    /// - onSuccess: returns the decoded `DashboardResponse`
+    /// - onError: returns the underlying `APIError`
+    public func getDashboardCache(
+        param : [String:Any] = [:],
+        onSuccess: @escaping (DashboardResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+
+        network.post(URLContstants.dashboardCacheAPI, params: param, responseType: DashboardResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+
     public func getUsefullLinks(
         param : [String:Any] = [:],
         onSuccess: @escaping (UsefulLinksResponse) -> Void,

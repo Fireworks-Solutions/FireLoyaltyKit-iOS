@@ -41,6 +41,29 @@ public final class ProfileClient {
         }
     }
 
+    /// Fetch the cached profile payload (served from the backend's cache tier).
+    /// - onSuccess: returns the decoded `ProfileResult`
+    /// - onError: returns the underlying `APIError`
+    public func getProfileCache(
+        param : [String:Any] = [:],
+        onSuccess: @escaping (ProfileResult) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+
+        network.post(URLContstants.GET_PROFILE_CACHE, params: param, responseType: ProfileModel.self) { result in
+            switch result {
+            case .success(let model):
+                if let profile = model.profile {
+                    onSuccess(profile)
+                } else {
+                    onError(.invalidResponse)
+                }
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+
     /// Save (update) the user’s profile on the server.
     /// - body: your `ProfileResult` (it must be Encodable—you can conform it if needed)
     /// - onSuccess: returns the updated `ProfileResult`

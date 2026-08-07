@@ -62,13 +62,15 @@ struct URLContstants {
     
     //MARK: DASHBOARD/HOME
     static let dashboardAPI = "api2/dashboard.php?"
+    static let dashboardCacheAPI = "api/dashboard_cache.php?"
     static let usefullLinkAPI = "api2/usefullinks.php?"
     static let MallsAPI = "api/malllist.php?"
     static let MEMBERS_LIST_API = "api2/member_alertList.php?"
     static let GET_PURCHASED_COUNT_API = "api2/purchased_count.php?"
-    
+
     //MARK: PROFILE
     static let GET_PROFILE = "api2/profile.php?"
+    static let GET_PROFILE_CACHE = "api/profile_cache.php?"
     static let UPDATE_PROFILE = "api2/updateProfile.php?"
     static let profileImageAPI = "api2/getProfileImage.php"
     static let updateProfilePicAPI = "api2/uploadProfilePic.php?"
