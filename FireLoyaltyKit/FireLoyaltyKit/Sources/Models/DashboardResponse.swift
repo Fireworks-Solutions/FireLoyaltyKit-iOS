@@ -30,6 +30,7 @@ public struct DashboardResponse: Codable {
     public let showDailyCheckIn: Bool?
     public let tjourney : Bool?
     public let tjourney_link : String?
+    public let tjourneyItems : [TJourneyItem]?
     public let order_url : String?
     public let voucherAiUrl: String?
     public let useAi: Bool?
@@ -49,10 +50,29 @@ public struct DashboardResponse: Codable {
         case showDailyCheckIn  = "showDailyCheckIn"
         case tjourney
         case tjourney_link
+        case tjourneyItems = "tjourney_items"
         case order_url
         case voucherAiUrl = "voucher_ai_url"
         case useAi = "use_ai"
         case aiId = "ai_id"
+    }
+}
+
+// MARK: - TJourneyItem
+/// Item of the dashboard `tjourney_items` array. `type` is "voucher" or "news".
+public struct TJourneyItem: Codable, Identifiable {
+    public let type: String?
+    public let id: String
+    public let title: String
+    public let point: String?
+    public let img: String?
+    public let date: String?
+    public let link: String?
+    public let openLink: Bool?
+
+    private enum CodingKeys: String, CodingKey {
+        case type, id, title, point, img, date, link
+        case openLink = "open_link"
     }
 }
 
