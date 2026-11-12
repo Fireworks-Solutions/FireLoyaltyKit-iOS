@@ -166,6 +166,7 @@ struct URLContstants {
     
     //MARK: DELETE ACCOUNT
     static let Delete_account_api = "api/deleteCust.php?"
+    static let ecomLoginAPI = "api/ecom-login.php?"                 // T-Marketplace login
 
     //MARK: COUPON SCANNING
     static let SCANNED_DETAIL_URL = "ecom/useCoupon.php?"

@@ -247,6 +247,24 @@ public final class SettingsClient {
         }
     }
     
+    /// T-Marketplace login (`api/ecom-login.php`). custid and sectoken are added by the network layer.
+    /// - onSuccess: returns the decoded `EcomLoginResponse` (check `status`, `message` and `token`)
+    /// - onError: returns the underlying `APIError`
+    public func ecomLogin(
+        parameters: [String: Any] = [:],
+        onSuccess: @escaping (EcomLoginResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        network.post(URLContstants.ecomLoginAPI, params: parameters, responseType: EcomLoginResponse.self) { result in
+            switch result {
+            case .success(let model):
+                onSuccess(model)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+    
     //MARK: getAppThemeSettings
     public func getAppThemeSettings(
         parameters: [String: Any] = [:],
