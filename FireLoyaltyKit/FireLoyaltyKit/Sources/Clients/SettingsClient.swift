@@ -231,6 +231,28 @@ public final class SettingsClient {
         }
     }
     
+    /// Delete the logged-in account (`api/deleteCust.php`).
+    ///
+    /// Builds the required `sign` = md5(`deleteAccountPass` + `custid`) itself, using the configured
+    /// `deleteAccountPass` and the active Keychain `custid`; the network layer adds the rest.
+    /// - onSuccess: returns the decoded `GeneralResponseModel` (check `status`).
+    /// - onError: `.invalidURL` when no `deleteAccountPass`/`custid` is available, otherwise the underlying `APIError`.
+    public func deleteAccount(
+        onSuccess: @escaping (GeneralResponseModel) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        let custid = KeychainHelper.shared.read(KeychainKeys.custid) ?? ""
+        let pass = FireworksLoyaltyKit.configuration?.deleteAccountPass ?? ""
+        guard !custid.isEmpty, !pass.isEmpty,
+              let sign = AppUtills().createVC(date: pass + custid) else {
+            onError(.invalidURL)
+            return
+        }
+        deleteAccount(parameters: ["sign": sign], onSuccess: onSuccess, onError: onError)
+    }
+
+    /// Delete the account with caller-built parameters (`api/deleteCust.php`).
+    /// Prefer `deleteAccount(onSuccess:onError:)`, which builds `sign` for you.
     public func deleteAccount(
         parameters: [String: Any],
         onSuccess: @escaping (GeneralResponseModel) -> Void,

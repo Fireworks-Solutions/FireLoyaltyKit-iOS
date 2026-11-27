@@ -687,6 +687,8 @@ public struct LoginResponse: Decodable, Identifiable {
     public let reset: String?
     
     public let parent_custid: String?
+    /// `true` when the account is a principal card (returned by `api2/switchCard.php`).
+    public let is_principal: Bool?
 
     private enum CodingKeys: String, CodingKey {
         case status, message, custid, name, fname
@@ -699,6 +701,7 @@ public struct LoginResponse: Decodable, Identifiable {
         case token
         case reset
         case parent_custid
+        case is_principal
     }
     
     // If you want a default value for phone when the key is missing or null:
@@ -718,6 +721,15 @@ public struct LoginResponse: Decodable, Identifiable {
         token          = try container.decodeIfPresent(String.self, forKey: .token)
         reset          = try container.decodeIfPresent(String.self, forKey: .reset)
         parent_custid  = try container.decodeIfPresent(String.self, forKey: .parent_custid)
+        if let flag = try? container.decodeIfPresent(Bool.self, forKey: .is_principal) {
+            is_principal = flag
+        } else if let number = try? container.decodeIfPresent(Int.self, forKey: .is_principal) {
+            is_principal = number != 0
+        } else if let text = try? container.decodeIfPresent(String.self, forKey: .is_principal) {
+            is_principal = ["1", "true", "yes"].contains(text.lowercased())
+        } else {
+            is_principal = nil
+        }
     }
 }
 

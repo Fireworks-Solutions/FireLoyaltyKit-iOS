@@ -18,6 +18,40 @@ public final class ProfileClient {
         self.network = network
     }
 
+    /// Switch the logged-in account between a principal card and its linked supplementary cards
+    /// (`api2/switchCard.php`).
+    ///
+    /// The network layer sends the *current* account's `custid` and `sectoken` automatically, so the
+    /// caller only provides the target. When the server reports `status == "success"` the new `custid`,
+    /// access token and refresh token are stored in the Keychain, so every following call is made as the
+    /// switched-to account. Otherwise the Keychain is left untouched.
+    /// - Parameters:
+    ///   - targetCustid: the supplementary card to switch to, or the principal's custid to switch back.
+    ///   - onSuccess: the decoded `LoginResponse` (includes `is_principal`). Check `status`/`message`: a
+    ///     server-side rejection (e.g. expired token, card not linked) is delivered here with a non-success status.
+    ///   - onError: the underlying `APIError` for transport/decoding failures.
+    public func switchCard(
+        targetCustid: String,
+        onSuccess: @escaping (LoginResponse) -> Void,
+        onError:   @escaping (APIError) -> Void
+    ) {
+        let params: [String: Any] = ["target_custid": targetCustid]
+
+        network.post(URLContstants.switchCard, params: params, responseType: LoginResponse.self) { result in
+            switch result {
+            case .success(let resp):
+                if (resp.status ?? "").lowercased() == "success" {
+                    KeychainHelper.shared.save(resp.custid ?? "", forKey: KeychainKeys.custid)
+                    KeychainHelper.shared.save(resp.token ?? "", forKey: KeychainKeys.accessToken)
+                    KeychainHelper.shared.save(resp.token ?? "", forKey: KeychainKeys.refreshToken)
+                }
+                onSuccess(resp)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
+
     /// Fetch the current user’s profile.
     /// - onSuccess: returns the decoded `ProfileResult`
     /// - onError: returns the underlying `APIError`

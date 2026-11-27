@@ -159,6 +159,7 @@ Full list of API endpoint constants defined in `FireLoyaltyKit/FireLoyaltyKit/So
 | `getSupplementaryCards` | `api/list_supplementary.php?` |
 | `addSupplementaryCard` | `api/add_supplementary.php?` |
 | `switchMember` | `api/autoLogin.php?` |
+| `switchCard` | `api2/switchCard.php?` |
 | **Eye Prescription** | |
 | `getPrescriptionsList` | `api/getPrescriptionList.php?` |
 | `getPrescriptionDetail` | `api/getPrescriptionDetails.php?` |

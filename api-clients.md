@@ -128,6 +128,7 @@ Inventory of every network client and endpoint used inside `FireLoyaltyKit/FireL
 | `getProfile(param:...)` | POST | `api2/profile.php` | `ProfileModel` → returns `.profile` (`ProfileResult`) |
 | `saveProfile(params:...)` | POST | `api2/updateProfile.php` | `GeneralResponseModel` |
 | `getBranchList(param:...)` | POST | `api/getMerchantBranchList.php` | `MerchantBranchResponse` |
+| `switchCard(targetCustid:...)` | POST | `api2/switchCard.php` | `LoginResponse` (adds `is_principal`) |
 
 ---
 
@@ -201,6 +202,7 @@ Inventory of every network client and endpoint used inside `FireLoyaltyKit/FireL
 | `getReferralRewardAPI(param:...)` | POST | `api2/getReferralRewardData.php` | `InviteModel` |
 | `sendFeedbackAPI(param:...)` | POST | `information/support_mailer.php` | `GeneralResponseModel` |
 | `readAllNotifications(parameters:...)` | POST | `api2/clear_all_noti.php` | `GeneralResponseModel` |
+| `deleteAccount(onSuccess:onError:)` | POST | `api/deleteCust.php` | `GeneralResponseModel` |
 | `deleteAccount(parameters:...)` | POST | `api/deleteCust.php` | `GeneralResponseModel` |
 | `getAppThemeSettings(parameters:...)` | POST | `api/app_settings.php` | `AppConfigResponse` |
 | `getContentDisplayInfo(parameters:...)` | POST | `api/content_display.php` | `ContentDisplayResponse` |

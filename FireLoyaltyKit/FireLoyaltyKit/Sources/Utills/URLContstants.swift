@@ -213,6 +213,7 @@ struct URLContstants {
     static let getSupplementaryCards = "api/list_supplementary.php?"
     static let addSupplementaryCard = "api/add_supplementary.php?"
     static let switchMember = "api/autoLogin.php?"
+    static let switchCard = "api2/switchCard.php?"
     
     // MARK: Eye Prescription
     static let getPrescriptionsList = "api/getPrescriptionList.php?"
